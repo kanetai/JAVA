@@ -36,7 +36,7 @@ public class IntegerAlgorithm extends Utility{
 	 */
 	public static final int LCM(int a, int b){ return a / GCD(a, b) * b; }
 	/**
-	 * Via Extended Euclid's algorithm, get the Greatest Common Divisor GCD(x[0], x[1], ..., x[x.length-1])<br>
+	 * Via Extended Euclid's algorithm, get the Greatest Common Divisor GCD(x[0], x[1], ..., x[n-1])<br>
 	 * n = x.length, O(n log max{a,b})
 	 * @param x
 	 * @return GCD(x[0], x[1], ..., x[x.length-1])
@@ -47,7 +47,7 @@ public class IntegerAlgorithm extends Utility{
 		return ret;
 	}
 	/**
-	 * Get the Least Common Multiple LCM(x[0], x[1], ..., x[x.length-1])<br>
+	 * Get the Least Common Multiple LCM(x[0], x[1], ..., x[n-1])<br>
 	 * n = x.length, O(n log max{a,b})
 	 * @param x
 	 * @return

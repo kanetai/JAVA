@@ -1,5 +1,11 @@
 package algorithm;
 public class Utility {
+	public static final double EPS = 1e-10;
+	public static boolean equal(double a, double b){ return Math.abs(a-b) < EPS; }	// a == b
+	public static boolean less(double a, double b){ return a - b < -EPS; }			// a < b
+	public static boolean leq(double a, double b){ return a - b < EPS; }			// a <= b
+	public static boolean greater(double a, double b){ return less(b,a); }			// a > b
+	public static boolean geq(double a, double b){ return leq(b,a); }				// a >= b
 	/**
 	 * Swap x[i] for x[j].<br>
 	 * AOJ No. 0011
