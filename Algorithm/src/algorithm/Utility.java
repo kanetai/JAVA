@@ -1,7 +1,8 @@
 package algorithm;
 public class Utility {
 	/**
-	 * Swap x[i] for x[j].
+	 * Swap x[i] for x[j].<br>
+	 * AOJ No. 0011
 	 * @param x array |modify|
 	 * @param i
 	 * @param j

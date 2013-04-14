@@ -1,6 +1,22 @@
 package algorithm;
 
+import java.util.Arrays;
+
 public class IntegerAlgorithm extends Utility{
+	/**
+	 * Via Eratosthenes' sieve, get primality test table<br>
+	 * O( nlog(log n) )<br>
+	 * AOJ No. 0009
+	 * @param n table_size
+	 * @return primality test table {isPrime(0), isPrime(1),..., isPrime(n-1)}
+	 */
+	public static final boolean[] sieve(int n){
+		boolean[] ret = new boolean[n]; Arrays.fill(ret, true);
+		ret[0] = ret[1] = false;
+		for(int i = 2; i*i < n; ++i)
+			if(ret[i]) for(int j = i*i; j < n; j+=i) ret[j] = false;
+		return ret;
+	}
 	/**
 	 * Via Extended Euclid's algorithm, get the Greatest Common Divisor GCD(a,b).<br>
 	 * O(log max{a,b})<br>
