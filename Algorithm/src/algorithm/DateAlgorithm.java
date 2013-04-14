@@ -26,6 +26,7 @@ public class DateAlgorithm {
 	}
 	/**
 	 * calc a day of the week by Zeller's congruence (y,m,d)<br>
+	 * AOJ No. 0027
 	 * @param y	year(>=-4800?) 1 BD-> y=0, 2 BD-> y=-1, ...,  n BD-> y=1-n
 	 * @param m	month
 	 * @param d	day
