@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class IntegerAlgorithm extends Utility{
 	/**
-	 * Via Eratosthenes' sieve, get primality test table<br>
+	 * Via Eratosthenes' sieve, create primality test table<br>
 	 * O( nlog(log n) )<br>
 	 * AOJ No. 0009
 	 * @param n table_size
