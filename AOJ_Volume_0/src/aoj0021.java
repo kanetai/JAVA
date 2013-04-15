@@ -22,8 +22,8 @@ public class aoj0021 {
 	}
 	@SuppressWarnings("serial")
 	public static class Point extends Point2D.Double {
-			public Point(double x, double y){ super(x,y); }
-			public final Point sub(Point p){ return new Point( x - p.x, y - p.y ); }
-			public final double cross(Point p){ return x * p.y - y * p.x; }
+		public Point(double x, double y){ super(x,y); }
+		public final Point sub(Point p){ return new Point( x - p.x, y - p.y ); }
+		public final double cross(Point p){ return x * p.y - y * p.x; }
 	}
 }

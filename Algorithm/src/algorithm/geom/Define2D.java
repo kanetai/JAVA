@@ -33,19 +33,39 @@ public class Define2D extends Utility{
 						( (this.y < o.y) ? -1 : (this.y > o.y) ? 1 : 0 );
 		}
 		/**
-		 * Get outer product |a||b|sinθ. a = this, b = p.<br>
+		 * Returns outer product |a||b|sinθ. a = this, b = p.<br>
 		 * AOJ No.0012, 0021
 		 * @param p 
 		 * @return |a||b|sinθ
 		 */
 		public final double cross(Point p){ return x * p.y - y * p.x; }
 		/**
-		 * Get inter product |a||b|cosθ. a = this, b = p.
+		 * Returns inter product |a||b|cosθ. a = this, b = p.
 		 * @param p
 		 * @return |a||b|cosθ
 		 */
 		public final double dot(Point p){ return x * p.x + y * p.y; }
 
+		/** 
+		 * Returns integer value that indicates positional relation of Points a(this point), b, and c.<br>
+		 * Positive return value indicates counter clockwise.
+		 * @param b Target Point 1
+		 * @param c	Target Point 2
+		 * @return 	 1:	ab → ac counter clockwise<br>
+		 * 			-1:	ab → ac clockwise<br>
+		 * 			 2:	(c--a--b or b--a--c) on line<br>
+		 * 			-2:	(a--b--c or c--b--a) on line (b≠c, includes a=b)<br>
+		 * 			 0: (a--c--b or b--c--a) on line (includes c=b, a=c, a=b=c)
+		 */
+		public final int ccw(Point b, Point c) {
+			Point ab = b.sub(this);
+			Point ac = c.sub(this);
+			if (greater(ab.cross(ac), 0))		return +1;	// counter clockwise
+			if (less(ab.cross(ac), 0))			return -1;	// clockwise
+			if (less(ab.dot(ac), 0))			return +2;	// (c--a--b or b--a--c) on line
+			if (less(ab.normsq(), ac.normsq()))	return -2;	// (a--b--c or c--b--a) on line (b≠c, includes a=b)
+			return 0;									// (a--c--b or b--c--a) on line (includes c=b, a=c, a=b=c)
+		}
 	} //class Point
 
 	public static class Circle{
@@ -56,10 +76,10 @@ public class Define2D extends Utility{
 		public void set(double x, double y, double r){ o.x = x; o.y = y; this.r = r; }
 		public void set(Point o, double r){ set(o.x, o.y, r); }
 		/**
-		 * Get positional relation with circle c<br>
+		 * Returns positional relation with circle c<br>
 		 * AOJ No.0023
-		 * @param c
-		 * @return positional relation
+		 * @param c circle
+		 * @return	positional relation
 		 */
 		public final PosRelation positionalRelation(Circle c){
 			double d2 = o.distanceSq(c.o);

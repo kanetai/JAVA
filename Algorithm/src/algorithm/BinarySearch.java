@@ -1,18 +1,18 @@
 package algorithm;
 import java.util.Comparator;
 public class BinarySearch {
-    private BinarySearch() {}
-    //TODO: test _binarySearch, lowerBound, upperBound, keyCount
-    /***** _binarySearch *****/
-    
+	private BinarySearch() {}
+	//TODO: test _binarySearch, lowerBound, upperBound, keyCount
+	/***** _binarySearch *****/
+
 	/** 
 	 * Searches a range[fromIndex, toIndex) of the specified array for the key using the binary search algorithm.
-     * The range must be sorted into ascending order according to the specified comparator prior to making this call.
-     * If it is not sorted, the results are undefined.
-     * If the range contains multiple elements equal to the specified object, 
-     * there is no guarantee which one will be found.<br>
-     * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)<br>
-     * ※This method is sample.
+	 * The range must be sorted into ascending order according to the specified comparator prior to making this call.
+	 * If it is not sorted, the results are undefined.
+	 * If the range contains multiple elements equal to the specified object, 
+	 * there is no guarantee which one will be found.<br>
+	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)<br>
+	 * ※This method is sample.
 	 * @param a			array
 	 * @param fromIndex	(inclusive)
 	 * @param toIndex	(exclusive)
@@ -32,12 +32,12 @@ public class BinarySearch {
 	}
 	/**
 	 * Searches the specified array for the key using the binary search algorithm.
-     * The array must be sorted into ascending order according to the specified comparator prior to making this call.
-     * If it is not sorted, the results are undefined.
-     * If the array contains multiple elements equal to the specified object, 
-     * there is no guarantee which one will be found.<br>
-     * n = a.length, O(log n)<br>
-     * ※This method is sample.
+	 * The array must be sorted into ascending order according to the specified comparator prior to making this call.
+	 * If it is not sorted, the results are undefined.
+	 * If the array contains multiple elements equal to the specified object, 
+	 * there is no guarantee which one will be found.<br>
+	 * n = a.length, O(log n)<br>
+	 * ※This method is sample.
 	 * @param a		array
 	 * @param key
 	 * @param c		comparator
@@ -48,12 +48,12 @@ public class BinarySearch {
 	}
 	/** 
 	 * Searches a range[fromIndex, toIndex) of the specified array for the key using the binary search algorithm.
-     * The range must be sorted into ascending order prior to making this call.
-     * If it is not sorted, the results are undefined.
-     * If the range contains multiple elements equal to the specified object, 
-     * there is no guarantee which one will be found.<br>
-     * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)<br>
-     * ※This method is sample.
+	 * The range must be sorted into ascending order prior to making this call.
+	 * If it is not sorted, the results are undefined.
+	 * If the range contains multiple elements equal to the specified object, 
+	 * there is no guarantee which one will be found.<br>
+	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)<br>
+	 * ※This method is sample.
 	 * @param a			array
 	 * @param fromIndex	(inclusive)
 	 * @param toIndex	(exclusive)
@@ -67,12 +67,12 @@ public class BinarySearch {
 	}
 	/**
 	 * Searches the specified array for the key using the binary search algorithm.
-     * The array must be sorted into ascending order prior to making this call.
-     * If it is not sorted, the results are undefined.
-     * If the array contains multiple elements equal to the specified object, 
-     * there is no guarantee which one will be found.<br>
-     * n = a.length, O(log n)<br>
-     * ※This method is sample.
+	 * The array must be sorted into ascending order prior to making this call.
+	 * If it is not sorted, the results are undefined.
+	 * If the array contains multiple elements equal to the specified object, 
+	 * there is no guarantee which one will be found.<br>
+	 * n = a.length, O(log n)<br>
+	 * ※This method is sample.
 	 * @param a		array
 	 * @param key
 	 * @return		index of key (-1 → not found)
@@ -82,15 +82,15 @@ public class BinarySearch {
 			@Override public int compare(T o1, T o2) { return o1.compareTo(o2); }
 		});
 	}
-	
+
 	/***** lowerBound *****/
 
 	/**
 	 * Calculates the std::lower_bound(a+fromImdex, a+toIndex, key, c)-a in C++.
 	 * The range[fromIndex, toIndex) must be sorted into ascending order 
 	 * according to the specified comparator prior to making this call.
-     * If it is not sorted, the results are undefined.<br>
-     * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
+	 * If it is not sorted, the results are undefined.<br>
+	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
 	 * @param a			array
 	 * @param fromIndex
 	 * @param toIndex
@@ -111,8 +111,8 @@ public class BinarySearch {
 	 * Calculates the std::lower_bound(a, key, c)-a in C++.
 	 * The array must be sorted into ascending order 
 	 * according to the specified comparator prior to making this call.
-     * If it is not sorted, the results are undefined.<br>
-     * n = a.length, O(log n)<br>
+	 * If it is not sorted, the results are undefined.<br>
+	 * n = a.length, O(log n)<br>
 	 * @param a			array
 	 * @param key
 	 * @param c			comparator
@@ -124,8 +124,8 @@ public class BinarySearch {
 	/**
 	 * Calculates the std::lower_bound(a+fromImdex, a+toIndex, key)-a in C++.
 	 * The range[fromIndex, toIndex) must be sorted into ascending order prior to making this call.
-     * If it is not sorted, the results are undefined.<br>
-     * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
+	 * If it is not sorted, the results are undefined.<br>
+	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
 	 * @param a			array
 	 * @param fromIndex
 	 * @param toIndex
@@ -140,9 +140,9 @@ public class BinarySearch {
 	/**
 	 * Calculates the std::lower_bound(a, key)-a in C++.
 	 * The array must be sorted into ascending order prior to making this call.
-     * If it is not sorted, the results are undefined.<br>
-     * n = a.length, O(log n)<br>
-     * AOJ No. 0034
+	 * If it is not sorted, the results are undefined.<br>
+	 * n = a.length, O(log n)<br>
+	 * AOJ No. 0034
 	 * @param a			array
 	 * @param key
 	 * @return			std::lower_bound(a, key)-a
@@ -152,15 +152,15 @@ public class BinarySearch {
 			@Override public int compare(T o1, T o2) { return o1.compareTo(o2); }
 		});
 	}
-	
+
 	/***** upperBound *****/
-	
+
 	/**
 	 * Calculates the std::upper_bound(a+fromImdex, a+toIndex, key, c)-a in C++.
 	 * The range[fromIndex, toIndex) must be sorted into ascending order 
 	 * according to the specified comparator prior to making this call.
-     * If it is not sorted, the results are undefined.<br>
-     * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
+	 * If it is not sorted, the results are undefined.<br>
+	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
 	 * @param a			array
 	 * @param fromIndex
 	 * @param toIndex
@@ -181,8 +181,8 @@ public class BinarySearch {
 	 * Calculates the std::upper_bound(a, key, c)-a in C++.
 	 * The array must be sorted into ascending order 
 	 * according to the specified comparator prior to making this call.
-     * If it is not sorted, the results are undefined.<br>
-     * n = a.length, O(log n)<br>
+	 * If it is not sorted, the results are undefined.<br>
+	 * n = a.length, O(log n)<br>
 	 * @param a			array
 	 * @param key
 	 * @param c			comparator
@@ -194,8 +194,8 @@ public class BinarySearch {
 	/**
 	 * Calculates the std::upper_bound(a+fromImdex, a+toIndex, key)-a in C++.
 	 * The range[fromIndex, toIndex) must be sorted into ascending order prior to making this call.
-     * If it is not sorted, the results are undefined.<br>
-     * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
+	 * If it is not sorted, the results are undefined.<br>
+	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
 	 * @param a			array
 	 * @param fromIndex
 	 * @param toIndex
@@ -210,8 +210,8 @@ public class BinarySearch {
 	/**
 	 * Calculates the std::upper_bound(a, key)-a in C++.
 	 * The array must be sorted into ascending order prior to making this call.
-     * If it is not sorted, the results are undefined.<br>
-     * n = a.length, O(log n)<br>
+	 * If it is not sorted, the results are undefined.<br>
+	 * n = a.length, O(log n)<br>
 	 * @param a			array
 	 * @param key
 	 * @return			std::upper_bound(a, key)-a
@@ -221,15 +221,15 @@ public class BinarySearch {
 			@Override public int compare(T o1, T o2) { return o1.compareTo(o2); }
 		});
 	}
-	
+
 	/***** keyCount *****/
-	
+
 	/**
 	 * Counts the numbers of key Objects in specified array[fromIndex, toIndex).
 	 * The range[fromIndex, toIndex) must be sorted into ascending order 
 	 * according to the specified comparator prior to making this call.
-     * If it is not sorted, the results are undefined.<br>
-     * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
+	 * If it is not sorted, the results are undefined.<br>
+	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
 	 * @param a			array
 	 * @param fromIndex
 	 * @param toIndex
@@ -244,8 +244,8 @@ public class BinarySearch {
 	 * Counts the number of key Objects in specified array.
 	 * The array must be sorted into ascending order 
 	 * according to the specified comparator prior to making this call.
-     * If it is not sorted, the results are undefined.<br>
-     * n = a.length, O(log n)<br>
+	 * If it is not sorted, the results are undefined.<br>
+	 * n = a.length, O(log n)<br>
 	 * @param a			array
 	 * @param key
 	 * @param c			comparator
@@ -257,8 +257,8 @@ public class BinarySearch {
 	/**
 	 * Counts the number of key Objects in specified array[fromIndex, toIndex).
 	 * The range[fromIndex, toIndex) must be sorted into ascending order prior to making this call.
-     * If it is not sorted, the results are undefined.<br>
-     * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
+	 * If it is not sorted, the results are undefined.<br>
+	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
 	 * @param a			array
 	 * @param fromIndex
 	 * @param toIndex
@@ -273,8 +273,8 @@ public class BinarySearch {
 	/**
 	 * Counts the number of key Objects in specified array.
 	 * The array must be sorted into ascending order prior to making this call.
-     * If it is not sorted, the results are undefined.<br>
-     * n = a.length, O(log n)<br>
+	 * If it is not sorted, the results are undefined.<br>
+	 * n = a.length, O(log n)<br>
 	 * @param a			array
 	 * @param key
 	 * @return			the number of key Objects

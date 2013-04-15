@@ -31,7 +31,7 @@ public class aoj0012 {
 		}};
 		boolean solve(Point p1, Point p2, Point p3, Point pp){ return true; }
 	}
-	
+
 	static boolean equal(double a, double b){ return Math.abs(a-b) < EPS; }
 	static double Heron(Point p1, Point p2, Point p3){
 		double a = p1.distance(p2), b = p2.distance(p3), c = p3.distance(p1);
@@ -40,9 +40,9 @@ public class aoj0012 {
 	}
 	@SuppressWarnings("serial")
 	public static class Point extends Point2D.Double {
-			public Point(double x, double y){ super(x,y); }
-			public final Point sub(Point p){ return new Point( x - p.x, y - p.y ); }
-			public final double cross(Point p){ return x * p.y - y * p.x; }
+		public Point(double x, double y){ super(x,y); }
+		public final Point sub(Point p){ return new Point( x - p.x, y - p.y ); }
+		public final double cross(Point p){ return x * p.y - y * p.x; }
 	}
 	public static double square(Point[] polygon){
 		int n = polygon.length;

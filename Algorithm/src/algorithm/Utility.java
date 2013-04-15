@@ -7,7 +7,7 @@ public class Utility {
 	public static boolean greater(double a, double b){ return less(b,a); }			// a > b
 	public static boolean geq(double a, double b){ return leq(b,a); }				// a >= b
 	/**
-	 * Swap x[i] for x[j].<br>
+	 * Swaps x[i] for x[j].<br>
 	 * AOJ No. 0011
 	 * @param x array |modify|
 	 * @param i

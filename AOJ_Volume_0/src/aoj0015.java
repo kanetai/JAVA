@@ -22,7 +22,7 @@ public class aoj0015 {
 			StringBuilder ans = new StringBuilder();
 			for(int i=0; i<m; ++i){
 				int s = (A.charAt(i) - '0') + (B.charAt(i) - '0') + carry;
-	            //int s = Character.digit( A.charAt(i), 10 ) + Character.digit( B.charAt(i), 10 ) + carry;
+				//int s = Character.digit( A.charAt(i), 10 ) + Character.digit( B.charAt(i), 10 ) + carry;
 				carry = s/10;
 				s%=10;
 				ans.append(s);

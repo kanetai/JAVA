@@ -8,12 +8,17 @@ public class DateAlgorithm {
 		private WeekDay(String description){ this.description = description; }
 		@Override public String toString(){ return description; }
 	}
+	/**
+	 * Tests whether y is reap year or not.
+	 * @param y	year
+	 * @return	true -> y is reap year. false -> y is not reap year.
+	 */
 	public static final boolean isLeapYear(int y){
 		//if( y < 0 ) y = -y; //グレゴリオ暦のまま紀元前までさかのぼって考えるとき 1 BD-> y=0, 2 BD-> y=-1, ... ,n BD-> y=1-n
 		return y % 4 == 0 && y % 100 != 0 || y % 400 == 0;
 	}
 	/**
-	 * Via Fairfield's congruence, Get the days until m/d/y from 1/1/1<br>
+	 * Calculates the days until m/d/y from 1/1/1 via Fairfield's congruence. <br>
 	 * Fairfield(y,m,d) mod 7 = 0->Sun, 2->Mon, 3->Tue, ...<br>
 	 * @param y	year > 0
 	 * @param m	month
@@ -25,7 +30,7 @@ public class DateAlgorithm {
 		return 365*y+y/4-y/100+y/400+306*(m+1)/10+d-428;
 	}
 	/**
-	 * calc a day of the week by Zeller's congruence (y,m,d)<br>
+	 * Calculates a day of the week from (y,m,d) via Zeller's congruence. <br>
 	 * AOJ No. 0027
 	 * @param y	year(>=-4800?) 1 BD-> y=0, 2 BD-> y=-1, ...,  n BD-> y=1-n
 	 * @param m	month
@@ -38,7 +43,7 @@ public class DateAlgorithm {
 		return WeekDay.getWeekDay((y + y/4 - y/100 + y/400 + (13*m + 8)/5 + d) % 7);
 	}
 	/**
-	 * calc a day of the week by Zelle's congruence (100J+K, m, d) ※y > 0<br>
+	 * Calculates a day of the week from (100J+K, m, d) via Zelle's congruence. ※y > 0<br>
 	 * @param J	year/100
 	 * @param K	year mod 100
 	 * @param m	month
@@ -53,7 +58,7 @@ public class DateAlgorithm {
 		return WeekDay.getWeekDay((5*J+K+K/4+J/4+26*(m+1)/10 + d +6) % 7);
 	}
 	/**
-	 * Get day (decimal representation) from hour, minute, sec.
+	 * Returns day (decimal representation) from hour, minute, sec.
 	 * @param hour
 	 * @param minute
 	 * @param sec

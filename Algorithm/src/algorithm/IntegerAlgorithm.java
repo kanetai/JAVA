@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class IntegerAlgorithm extends Utility{
 	/**
-	 * Via Eratosthenes' sieve, create primality test table<br>
+	 * Creates primality test table via Eratosthenes' sieve. <br>
 	 * O( nlog(log n) )<br>
 	 * AOJ No. 0009
 	 * @param n table_size
@@ -18,7 +18,7 @@ public class IntegerAlgorithm extends Utility{
 		return ret;
 	}
 	/**
-	 * Via Extended Euclid's algorithm, get the Greatest Common Divisor GCD(a,b).<br>
+	 * Calculates the Greatest Common Divisor GCD(a,b) via Extended Euclid's algorithm. <br>
 	 * O(log max{a,b})<br>
 	 * AOJ No.0005
 	 * @param a
@@ -27,7 +27,7 @@ public class IntegerAlgorithm extends Utility{
 	 */
 	public static final int GCD(int a, int b){ return b == 0 ? a : GCD(b, a%b); }
 	/**
-	 * Get the Least Common Multiple LCM(a,b).<br>
+	 * Calculates the Least Common Multiple LCM(a,b).<br>
 	 * O(log max{a,b})<br>
 	 * AOJ No.0005
 	 * @param a
@@ -36,7 +36,7 @@ public class IntegerAlgorithm extends Utility{
 	 */
 	public static final int LCM(int a, int b){ return a / GCD(a, b) * b; }
 	/**
-	 * Via Extended Euclid's algorithm, get the Greatest Common Divisor GCD(x[0], x[1], ..., x[n-1])<br>
+	 * Calculates the Greatest Common Divisor GCD(x[0], x[1], ..., x[n-1]) via Extended Euclid's algorithm. <br>
 	 * n = x.length, O(n log max{a,b})
 	 * @param x
 	 * @return GCD(x[0], x[1], ..., x[x.length-1])
@@ -47,7 +47,7 @@ public class IntegerAlgorithm extends Utility{
 		return ret;
 	}
 	/**
-	 * Get the Least Common Multiple LCM(x[0], x[1], ..., x[n-1])<br>
+	 * Calculates the Least Common Multiple LCM(x[0], x[1], ..., x[n-1])<br>
 	 * n = x.length, O(n log max{a,b})
 	 * @param x
 	 * @return
@@ -58,7 +58,7 @@ public class IntegerAlgorithm extends Utility{
 		return ret;
 	}
 	/**
-	 * Via Extended Euclid's algorithm, get GCD(a,b) and a solution (x1,x2) for ax1 + bx2 = GCD(a,b). <br>
+	 * Calculates GCD(a,b) and a solution (x1,x2) for ax1 + bx2 = GCD(a,b) via Extended Euclid's algorithm. <br>
 	 * O(log max(a,b))
 	 * @param a
 	 * @param b
@@ -70,7 +70,9 @@ public class IntegerAlgorithm extends Utility{
 		return ret;
 	}
 	/**
-	 * Via Extended Euclid's algorithm, get GCD(a,b) and a solution (x1,x2) for ax1 + bx2 = GCD(a,b). O(log max(a,b))
+	 * Calculates GCD(a,b) and a solution (x1,x2) for ax1 + bx2 = GCD(a,b) via Extended Euclid's algorithm. <br>
+	 * <a href=http://www2.cc.niigata-u.ac.jp/~takeuchi/tbasic/BackGround/EuclidRec.html>consultation</a>
+	 * O(log max(a,b))
 	 * @param a
 	 * @param b
 	 * @param x	array(size>=2)←{x1, x2} |modify|
@@ -78,8 +80,7 @@ public class IntegerAlgorithm extends Utility{
 	 */
 	public static int extGCD(int a, int b, int x[]){
 		int g = a;
-		x[0] = 1;
-		x[1] = 0;
+		x[0] = 1; x[1] = 0;
 		if (b != 0){
 			g = extGCD(b, a % b, x);
 			swap(x, 0, 1);
