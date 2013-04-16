@@ -48,7 +48,8 @@ public class Define2D extends Utility{
 
 		/** 
 		 * Returns integer value that indicates positional relation of Points a(this point), b, and c.<br>
-		 * Positive return value indicates counter clockwise.
+		 * Positive return value indicates counter clockwise.<br>
+		 * AOJ No. 0035
 		 * @param b Target Point 1
 		 * @param c	Target Point 2
 		 * @return 	 1:	ab → ac counter clockwise<br>

@@ -20,7 +20,7 @@ public class IntegerAlgorithm extends Utility{
 	/**
 	 * Calculates the Greatest Common Divisor GCD(a,b) via Extended Euclid's algorithm. <br>
 	 * O(log max{a,b})<br>
-	 * AOJ No.0005
+	 * AOJ No.0005, 0040
 	 * @param a
 	 * @param b
 	 * @return GCD(a,b)
@@ -59,7 +59,8 @@ public class IntegerAlgorithm extends Utility{
 	}
 	/**
 	 * Calculates GCD(a,b) and a solution (x1,x2) for ax1 + bx2 = GCD(a,b) via Extended Euclid's algorithm. <br>
-	 * O(log max(a,b))
+	 * O(log max(a,b))<br>
+	 * AOJ No. 0040
 	 * @param a
 	 * @param b
 	 * @return array {x1, x2, GCD(a,b)}
