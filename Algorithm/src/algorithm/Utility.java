@@ -8,7 +8,7 @@ public class Utility {
 	public static boolean geq(double a, double b){ return leq(b,a); }				// a >= b
 	/**
 	 * Swaps x[i] for x[j].<br>
-	 * AOJ No. 0011
+	 * AOJ No. 0011, 0040
 	 * @param x array |modify|
 	 * @param i
 	 * @param j

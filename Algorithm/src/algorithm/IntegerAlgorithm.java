@@ -59,27 +59,27 @@ public class IntegerAlgorithm extends Utility{
 	}
 	/**
 	 * Calculates GCD(a,b) and a solution (x1,x2) for ax1 + bx2 = GCD(a,b) via Extended Euclid's algorithm. <br>
-	 * O(log max(a,b))<br>
-	 * AOJ No. 0040
+	 * O(log max(a,b))
 	 * @param a
 	 * @param b
 	 * @return array {x1, x2, GCD(a,b)}
 	 */
-	public static int[] extGCD(int a, int b){
+	public static final int[] extGCD(int a, int b){
 		int[] ret = new int[3];
 		ret[2] = extGCD(a, b, ret);
 		return ret;
 	}
 	/**
 	 * Calculates GCD(a,b) and a solution (x1,x2) for ax1 + bx2 = GCD(a,b) via Extended Euclid's algorithm. <br>
-	 * <a href=http://www2.cc.niigata-u.ac.jp/~takeuchi/tbasic/BackGround/EuclidRec.html>consultation</a>
-	 * O(log max(a,b))
+	 * <a href=http://www2.cc.niigata-u.ac.jp/~takeuchi/tbasic/BackGround/EuclidRec.html>consultation</a><br>
+	 * O(log max(a,b))<br>
+	 * AOJ No. 0040
 	 * @param a
 	 * @param b
 	 * @param x	array(size>=2)←{x1, x2} |modify|
 	 * @return	GCD(a,b)
 	 */
-	public static int extGCD(int a, int b, int x[]){
+	public static final int extGCD(int a, int b, int x[]){
 		int g = a;
 		x[0] = 1; x[1] = 0;
 		if (b != 0){
@@ -88,5 +88,38 @@ public class IntegerAlgorithm extends Utility{
 			x[1] -= (a / b) * x[0];
 		}
 		return g;
+	}
+	/**
+	 * Tests whether a positive integer is prime number or not.
+	 * @param n positive integer
+	 * @return true -> n is prime number. false -> n is prime number.
+	 */
+	public static final boolean isPrime(int n){
+		if( n <= 1 ) return false; 
+		for(int i=2; i*i <= n;i++ ) if( n % i == 0 ) return false;
+		return true;
+	}
+	/**
+	 * Tests whether two positive integers are coprime or not.<br>
+	 * O( log max(a,b) )<br>
+	 * AOJ No. 0040
+	 * @param a integer
+	 * @param b integer
+	 * @return true -> a is coprime to b. false -> a is not coprime to b.
+	 */
+	public static final boolean isCoprime(int a, int b){ return GCD(a,b) == 1; }
+
+	/**
+	 * Calculates modular multiplicative inverse(a^-1 mod m).
+	 * If a^-1 mod m doesn't exist(i.e. a is coprime to m), returns 0.<br>
+	 * O( log max(a,m) )<br>
+	 * AOJ No. 0040
+	 * @param a positive integer
+	 * @param m modulus
+	 * @return	a^-1 mod m.  0 -> a^-1 mod m doesn't exist.
+	 */
+	public static final int modInverse(int a, int m){
+		int[] x = new int[2];
+		return (extGCD(a, m, x) == 1) ? (x[0] + m) % m : 0;
 	}
 }
