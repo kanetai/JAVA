@@ -1,5 +1,8 @@
 package algorithm;
 
+import java.util.HashMap;
+import java.util.TreeMap;
+
 public class Utility {
 	public static final double EPS = 1e-10;
 	public static boolean equal(double a, double b){ return Math.abs(a-b) < EPS; }	// a == b
@@ -8,7 +11,6 @@ public class Utility {
 	public static boolean greater(double a, double b){ return less(b,a); }			// a > b
 	public static boolean geq(double a, double b){ return leq(b,a); }				// a >= b
 	/**
-	 * 変更する?
 	 * Swaps x[i] for x[j].<br>
 	 * AOJ No. 0011, 0040
 	 * @param x array |modify|
@@ -50,5 +52,25 @@ public class Utility {
 	 */
 	public static void reverse(Object[] a){
 		reverse(a, 0, a.length);
+	}
+
+	/**
+	 * Exteded HashMap<K, Integer> for counting frequency of K.
+	 * @param <K> key
+	 */
+	@SuppressWarnings("serial") public static class HashFreqTable<K> extends HashMap<K,Integer>{
+		HashFreqTable(){ super(); }
+		HashFreqTable(HashFreqTable<K> f){ super((HashMap<K, Integer>)f); }
+		public Integer add(K key) { return put(key, containsKey(key) ? get(key) + 1 : 1); }
+	}
+	/**
+	 * Extended TreeMap<K, Integer> for counting frequency of K.<br>
+	 * AOJ No. 0043
+	 * @param <K> key
+	 */
+	@SuppressWarnings("serial") public static class TreeFreqTable<K> extends TreeMap<K,Integer>{
+		TreeFreqTable(){ super(); }
+		TreeFreqTable(TreeFreqTable<K> f){ super((TreeMap<K, Integer>)f); }
+		public Integer add(K key) { return put(key, containsKey(key) ? get(key) + 1 : 1); }
 	}
 }
