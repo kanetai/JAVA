@@ -1,7 +1,11 @@
 package algorithm;
 import java.util.Comparator;
-public class BinarySearch {
-	private BinarySearch() {}
+/**
+ * <a href="http://www.cplusplus.com/reference/algorithm/binary_search/">std::binary_search C++ reference</a><br>
+ * <a href="http://www.cplusplus.com/reference/algorithm/lower_bound/">std::lower_bound C++ reference</a><br>
+ * <a href="http://www.cplusplus.com/reference/algorithm/upper_bound/">std::upper_bound C++ reference</a><br>
+ */
+public class BinarySearch extends Utility{
 	//TODO: test _binarySearch, lowerBound, upperBound, keyCount
 	/***** _binarySearch *****/
 
@@ -108,7 +112,7 @@ public class BinarySearch {
 		return ub; 						//(lb, ub], ub = lb + 1 → [ub, ub+1)
 	}
 	/**
-	 * Calculates the std::lower_bound(a, key, c)-a in C++.
+	 * Calculates the std::lower_bound(a, a+n, key, c)-a in C++.
 	 * The array must be sorted into ascending order 
 	 * according to the specified comparator prior to making this call.
 	 * If it is not sorted, the results are undefined.<br>
@@ -138,7 +142,7 @@ public class BinarySearch {
 		});
 	}
 	/**
-	 * Calculates the std::lower_bound(a, key)-a in C++.
+	 * Calculates the std::lower_bound(a, a+n, key)-a in C++.
 	 * The array must be sorted into ascending order prior to making this call.
 	 * If it is not sorted, the results are undefined.<br>
 	 * n = a.length, O(log n)<br>
@@ -178,7 +182,7 @@ public class BinarySearch {
 		return ub; 						//ub = lb + 1, [lb, ub)
 	}
 	/**
-	 * Calculates the std::upper_bound(a, key, c)-a in C++.
+	 * Calculates the std::upper_bound(a, a+n, key, c)-a in C++.
 	 * The array must be sorted into ascending order 
 	 * according to the specified comparator prior to making this call.
 	 * If it is not sorted, the results are undefined.<br>
@@ -208,7 +212,7 @@ public class BinarySearch {
 		});
 	}
 	/**
-	 * Calculates the std::upper_bound(a, key)-a in C++.
+	 * Calculates the std::upper_bound(a, a+n, key)-a in C++.
 	 * The array must be sorted into ascending order prior to making this call.
 	 * If it is not sorted, the results are undefined.<br>
 	 * n = a.length, O(log n)<br>
