@@ -21,7 +21,7 @@ public class Utility {
 	public static final int[] swap(int[] x, int i, int j){
 		int tmp = x[i]; x[i] = x[j]; x[j] = tmp; return x;
 	}
-	
+
 	/**
 	 * Swaps a[i] for a[j]<br>
 	 * AOJ No. 0041
@@ -33,7 +33,7 @@ public class Utility {
 	public static Object[] swap(Object[] a, int i, int j){	
 		Object tmp = a[i]; a[i] = a[j]; a[j] = tmp; return a;
 	}
-	
+
 	/**
 	 * Reverses the order of the elements in the range[fromIndex, toIndex).<br>
 	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(n)<br>
@@ -65,7 +65,7 @@ public class Utility {
 	}
 	/**
 	 * Extended TreeMap<K, Integer> for counting frequency of K.<br>
-	 * AOJ No. 0043
+	 * AOJ No. 0043, 0065
 	 * @param <K> key
 	 */
 	@SuppressWarnings("serial") public static class TreeFreqTable<K> extends TreeMap<K,Integer>{

@@ -50,7 +50,7 @@ public class Define2D extends Utility{
 		/** 
 		 * Returns integer value that indicates positional relation of Points a(this point), b, and c.<br>
 		 * Positive return value indicates counter clockwise.<br>
-		 * AOJ No. 0035
+		 * AOJ No. 0035 0068
 		 * @param b Target Point 1
 		 * @param c	Target Point 2
 		 * @return 	 1:	ab → ac counter clockwise<br>
@@ -69,7 +69,7 @@ public class Define2D extends Utility{
 			return 0;									// (a--c--b or b--c--a) on line (includes c=b, a=c, a=b=c)
 		}
 	} //class Point
-	
+
 	public static class Line{
 		private final Point start;
 		private final Point end;
@@ -113,8 +113,8 @@ public class Define2D extends Utility{
 		 * @return  true -> l intersects with m. false -> l doesn't intersect with m.
 		 */
 		public final boolean intersectsLL(Line m) {
-			  return Math.abs(end.sub(start).cross(m.end.sub(m.start))) > EPS || // non-parallel
-			         Math.abs(end.sub(start).cross(m.start.sub(end))) < EPS;     // same line
+			return Math.abs(end.sub(start).cross(m.end.sub(m.start))) > EPS || // non-parallel
+					Math.abs(end.sub(start).cross(m.start.sub(end))) < EPS;     // same line
 		}
 		/**
 		 * Calculates point at the intersection of line l(this) with line m.

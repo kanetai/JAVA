@@ -1,4 +1,6 @@
 package algorithm.geom;
+import java.util.Arrays;
+
 import algorithm.geom.Define2D;
 public class Algorithm2D extends Define2D{
 	/**
@@ -39,7 +41,30 @@ public class Algorithm2D extends Define2D{
 		}
 		return true;
 	}
-	
+
+	/**
+	 * Gets convex hull from the specified vertex set via Andrew's Monotone Chain. If |V| < 3, returns null.
+	 * O(|V| log |V|)<br>
+	 * AOJ No. 0068
+	 * @param V vertex set
+	 * @return  vertex set constructing convex-hull (clockwise). null -> |V|<3
+	 */
+	public static final Point[] convexHull(Point[] V) {
+		int n = V.length;
+		if(n < 3) return null;
+		Arrays.sort(V); //sorts based on x coordinate in ascending order
+		int k = 0; //index of C
+		Point[] C = new Point[2*n];
+		/* lower-hull */
+		for(int i = 0; i < n; C[k++] = V[i++])
+			while(k >= 2 && C[k-2].ccw(C[k-1], V[i]) <= 0) --k;
+		/* upper-hull */
+		// t=|lower-hull|+1
+		for(int i = n-2, t = k + 1; i >= 0; C[k++] = V[i--])
+			while(k >= t && C[k-2].ccw(C[k-1], V[i]) <= 0) --k;
+		return Arrays.copyOf(C, k-1); //C[k-1] is start point of lower-hull.
+	}
+
 	/**
 	 * Tests whether polygon[0]→polygon[1]→...→polygon[polygon.length-1]→polygon[0] contains point p or not. <br>
 	 * AOJ No. 0059
@@ -58,7 +83,7 @@ public class Algorithm2D extends Define2D{
 		}
 		return in ? true : false; //in out
 	}
-	
+
 	/**
 	 * Tests whether rectangle a intersects with rectangle b or not.<br>
 	 * AOJ No. 0059
