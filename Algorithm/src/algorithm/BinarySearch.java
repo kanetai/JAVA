@@ -146,7 +146,7 @@ public class BinarySearch extends Utility{
 	 * The array must be sorted into ascending order prior to making this call.
 	 * If it is not sorted, the results are undefined.<br>
 	 * n = a.length, O(log n)<br>
-	 * AOJ No. 0034
+	 * AOJ No. 0034, 0044
 	 * @param a			array
 	 * @param key
 	 * @return			std::lower_bound(a, key)-a

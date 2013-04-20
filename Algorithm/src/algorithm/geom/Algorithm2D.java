@@ -39,4 +39,34 @@ public class Algorithm2D extends Define2D{
 		}
 		return true;
 	}
+	
+	/**
+	 * Tests whether polygon[0]→polygon[1]→...→polygon[polygon.length-1]→polygon[0] contains point p or not. <br>
+	 * AOJ No. 0059
+	 * @param Polygon	vertex set of target polygon
+	 * @param p			target point
+	 * @return			true -> polygon contains p. false -> polygon doesn't contain p.
+	 */
+	public static final boolean contains(Point[] polygon, Point p) {
+		boolean in = false;
+		for (int i = 0, n = polygon.length; i < n; ++i) {
+			Point a = polygon[i].sub(p), b = polygon[(i+1)%n].sub(p);
+			if (a.y > b.y){ Point temp = b; b = a; a = temp; }
+			if (a.y <= 0 && 0 < b.y) //点pからxの正方向への半直線が多角形の頂点をとおるとき、最終的に交差数を偶数回にするためどちらかを<=ではなく、<にする
+				if (a.cross(b) < 0) in = !in; //=0 -> a//b -> on 
+			if (a.cross(b) == 0 && a.dot(b) <= 0) return true; //on edge
+		}
+		return in ? true : false; //in out
+	}
+	
+	/**
+	 * Tests whether rectangle a intersects with rectangle b or not.<br>
+	 * AOJ No. 0059
+	 * @param a Rectangle = {(ax, ay), (ax+aw, ay+ah)}
+	 * @param b Rectangle = {(bx, by), (bx+bw, by+bh)}
+	 * @return true -> a intersects with b. false -> a doesn't intersect with b.
+	 */
+	public static final boolean intersectsRR(Point[] a, Point[] b){
+		return leq(a[0].x, b[1].x) && leq(a[0].y, b[1].y) && leq(b[0].x, a[1].x) && leq(b[0].y, a[1].y);
+	}
 }

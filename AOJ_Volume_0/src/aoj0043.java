@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class aoj0043 {
 	static final Scanner stdin =  new Scanner(System.in);
 	static final ArrayList<String> pat = new ArrayList<String>(); //順子、刻子のパターン

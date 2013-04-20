@@ -34,13 +34,14 @@ public class Define2D extends Utility{
 		}
 		/**
 		 * Returns outer product |a||b|sinθ. a = this, b = p.<br>
-		 * AOJ No.0012, 0021
+		 * AOJ No.0012, 0021, 0059
 		 * @param p 
 		 * @return |a||b|sinθ
 		 */
 		public final double cross(Point p){ return x * p.y - y * p.x; }
 		/**
-		 * Returns inter product |a||b|cosθ. a = this, b = p.
+		 * Returns inter product |a||b|cosθ. a = this, b = p.<br>
+		 * AOJ No. 0058, 0059
 		 * @param p
 		 * @return |a||b|cosθ
 		 */
@@ -68,6 +69,67 @@ public class Define2D extends Utility{
 			return 0;									// (a--c--b or b--c--a) on line (includes c=b, a=c, a=b=c)
 		}
 	} //class Point
+	
+	public static class Line{
+		private final Point start;
+		private final Point end;
+		public Line(double sx, double sy, double ex, double ey){ start = new Point(sx,sy); end = new Point(ex,ey); }
+		public Line(Point start, Point end){ this.start = new Point(start); this.end = new Point(end); }
+		public void set(double sx, double sy, double ex, double ey){ start.x = sx; start.y = sy; end.x = ex; end.y = ey; }
+		public void set(Point start, Point end){ set(start.x, start.y, end.x, end.y); }
+		public void set(Line l){ set(l.start, l.end); }
+		/** 
+		 * Returns integer value that indicates positional relation of Points a(this.start), b(this.end), and c.
+		 * Positive return value indicates counter clockwise.<br>
+		 * AOJ No. 0059
+		 * @param c	Target Point
+		 * @return 	 1:	ab → ac counter clockwise<br>
+		 * 			-1:	ab → ac clockwise<br>
+		 * 			 2:	(c--a--b or b--a--c) on line<br>
+		 * 			-2:	(a--b--c or c--b--a) on line (b≠c, includes a=b)<br>
+		 * 			 0: (a--c--b or b--c--a) on line (includes c=b, a=c, a=b=c)
+		 */
+		public final int ccw(Point p){ return start.ccw(end, p); }
+		/**
+		 * Tests whether segment s(this) intersects with segment t or not. <br>
+		 * AOJ No. 0059
+		 * @param t Target Segment
+		 * @return  true -> s intersects with t. false -> s doesn't intersect with t.
+		 */
+		public final boolean intersectsSS(Line t) {
+			return ccw(t.start) * ccw(t.end) <= 0 && t.ccw(start) * t.ccw(end) <= 0;
+		}
+		/**
+		 * Calculates point at the intersection of segment s(this) with segment t
+		 * @param t Target Segment
+		 * @return  Point intersection point. null -> Intersection point doesn't exists. 
+		 */
+		public final Point intersectionSSPoint(Line t) {
+			return intersectsSS(t) ? intersectionLLPoint(t) : null;
+		}
+		/**
+		 * Tests whether line l(this) intersects with line m or not.  
+		 * @param m Target Line
+		 * @return  true -> l intersects with m. false -> l doesn't intersect with m.
+		 */
+		public final boolean intersectsLL(Line m) {
+			  return Math.abs(end.sub(start).cross(m.end.sub(m.start))) > EPS || // non-parallel
+			         Math.abs(end.sub(start).cross(m.start.sub(end))) < EPS;     // same line
+		}
+		/**
+		 * Calculates point at the intersection of line l(this) with line m.
+		 * @param m Target Line
+		 * @return  Point intersection point. null -> Intersection point doesn't exists. 
+		 */
+		public final Point intersectionLLPoint(Line m){
+			Point mp = m.end.sub(m.start), lp = end.sub(start);
+			double A = m.end.sub(start).cross(mp);
+			double B = lp.cross(mp);
+			if(equal(A, 0) && equal(B, 0)) return m.start; //same line
+			if(equal(B, 0)) return null; //parallel
+			return start.add(lp.mul(A/B));
+		}
+	} //class Line
 
 	public static class Circle{
 		public final Point o;
