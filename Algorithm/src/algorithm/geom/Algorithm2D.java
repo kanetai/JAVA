@@ -7,7 +7,7 @@ public class Algorithm2D extends Define2D{
 	 * Returns the area of a polygon.<br>
 	 * n = polygon.length, polygon[0]→polygon[1]→...→polygon[n-1]→polygon[0]<br>
 	 * O(n)<br>
-	 * AOJ No. 0012
+	 * AOJ No. 0012, 0079
 	 * @param polygon(n>=3) 
 	 * @return The area of a polygon
 	 */

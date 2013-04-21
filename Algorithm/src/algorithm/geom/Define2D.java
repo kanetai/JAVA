@@ -32,19 +32,7 @@ public class Define2D extends Utility{
 					( (this.x < o.x) ? -1 : 1 ) : 
 						( (this.y < o.y) ? -1 : (this.y > o.y) ? 1 : 0 );
 		}
-		/**
-		 * Returns outer product |a||b|sinθ. a = this, b = p.<br>
-		 * AOJ No.0012, 0021, 0059
-		 * @param p 
-		 * @return |a||b|sinθ
-		 */
 		public final double cross(Point p){ return x * p.y - y * p.x; }
-		/**
-		 * Returns inter product |a||b|cosθ. a = this, b = p.<br>
-		 * AOJ No. 0058, 0059
-		 * @param p
-		 * @return |a||b|cosθ
-		 */
 		public final double dot(Point p){ return x * p.x + y * p.y; }
 
 		/** 
@@ -68,6 +56,24 @@ public class Define2D extends Utility{
 			if (less(ab.normsq(), ac.normsq()))	return -2;	// (a--b--c or c--b--a) on line (b≠c, includes a=b)
 			return 0;									// (a--c--b or b--c--a) on line (includes c=b, a=c, a=b=c)
 		}
+		/**
+		 * Calculates the orthogonal projection onto the specified line l.
+		 * AOJ No. 0081
+		 * @param p point
+		 * @return  orthogonal projection
+		 */
+		public final Point projection(Line l){
+			Point a = l.end.sub(l.start);
+			Point b = this.sub(l.start);
+			return l.start.add(a.mul(a.dot(b)/a.normsq()));
+		}
+		/**
+		 * Calculates the reflection over the specified line l.<br>
+		 * AOJ No. 0081
+		 * @param p point
+		 * @return  reflection
+		 */
+		public final Point reflection(Line l){ return projection(l).mul(2).sub(this); }
 	} //class Point
 
 	public static class Line{
@@ -129,6 +135,18 @@ public class Define2D extends Utility{
 			if(equal(B, 0)) return null; //parallel
 			return start.add(lp.mul(A/B));
 		}
+		/**
+		 * Calculates the orthogonal projection of specified point p onto the line(this).
+		 * @param p point
+		 * @return  orthogonal projection
+		 */
+		public final Point projection(Point p){ return p.projection(this); }
+		/**
+		 * Calculates a reflection of specified point p over the line(this).
+		 * @param p point
+		 * @return  reflection
+		 */
+		public final Point reflection(Point p){ return p.reflection(this); }
 	} //class Line
 
 	public static class Circle{
