@@ -1,8 +1,9 @@
 package algorithm;
 
 import java.util.Arrays;
-
-public class IntegerAlgorithm extends Utility{
+import static algorithm.Utility.swap;
+public final class IntegerAlgorithm {
+	IntegerAlgorithm(){}
 	/**
 	 * Creates primality test table via Eratosthenes' sieve. <br>
 	 * O( nlog(log n) )<br>

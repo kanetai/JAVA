@@ -1,8 +1,8 @@
 package algorithm.geom;
 import java.util.Arrays;
-
-import algorithm.geom.Define2D;
-public class Algorithm2D extends Define2D{
+import algorithm.geom.Define2D.Point;
+import static algorithm.Utility.leq;
+public final class Algorithm2D {
 	/**
 	 * Returns the area of a polygon.<br>
 	 * n = polygon.length, polygon[0]→polygon[1]→...→polygon[n-1]→polygon[0]<br>

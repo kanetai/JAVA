@@ -5,7 +5,8 @@ import java.util.Comparator;
  * <a href="http://www.cplusplus.com/reference/algorithm/lower_bound/">std::lower_bound C++ reference</a><br>
  * <a href="http://www.cplusplus.com/reference/algorithm/upper_bound/">std::upper_bound C++ reference</a><br>
  */
-public class BinarySearch extends Utility{
+public final class BinarySearch {
+	private BinarySearch(){}
 	//TODO: test _binarySearch, lowerBound, upperBound, keyCount
 	/***** _binarySearch *****/
 

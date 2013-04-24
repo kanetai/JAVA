@@ -2,7 +2,8 @@ package algorithm;
 
 import java.util.Arrays;
 
-public class Poker {
+public final class Poker {
+	private Poker(){}
 	//TODO: verify
 	enum Suit{ Hearts, Diamonds, Clubs, Spades; }
 	enum Hands{ High_Card, One_Pair, Two_Pairs, Three_of_a_Kind,

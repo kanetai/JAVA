@@ -1,10 +1,12 @@
 package algorithm;
 import java.util.Comparator;
+import static algorithm.Utility.swap;
+import static algorithm.Utility.reverse;
 /**
  * <a href="http://www.cplusplus.com/reference/algorithm/next_permutation/">std::next_permutation C++ reference</a>
  */
-public class NextPermutation extends Utility{
-	
+public final class NextPermutation {
+	private NextPermutation(){}
 	/**
 	 * Calculates the std::next_permutation(a+fromImdex, a+toIndex, c) in C++.<br>
 	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length)

@@ -1,5 +1,6 @@
 package algorithm;
-public class DateAlgorithm {
+public final class DateAlgorithm {
+	private DateAlgorithm(){}
 	enum WeekDay {
 		Sun("Sunday"), Mon("Monday"), Tue("Tuesday"), Wed("Wednesday"), Thu("Thursday"), Fri("Friday"), Sat("Saturday");
 		private static final WeekDay[] Table = WeekDay.values();

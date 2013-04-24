@@ -1,7 +1,11 @@
 package algorithm.geom;
 import java.awt.geom.Point2D;
-import algorithm.Utility;
-public class Define2D extends Utility{
+import static algorithm.Utility.equal;
+import static algorithm.Utility.less;
+import static algorithm.Utility.greater;
+import static algorithm.Utility.EPS;
+public final class Define2D {
+	private Define2D(){}
 	enum PosRelation { Separated, Circumscribed, CrossAt2Point, Inscribed, FullIncluded; }
 	@SuppressWarnings("serial")
 	public static class Point extends Point2D.Double implements Comparable<Point>{

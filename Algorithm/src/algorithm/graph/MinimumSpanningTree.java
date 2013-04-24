@@ -3,9 +3,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-import algorithm.graph.GraphElement;
-
-public class MinimumSpanningTree extends GraphElement {
+import algorithm.graph.GraphElement.Edge;
+public final class MinimumSpanningTree {
+	private MinimumSpanningTree(){}
 	/** Result of Minimum Spanning Tree Algorithm */
 	public static class MSTResult{
 		private int totalCost;
@@ -16,12 +16,12 @@ public class MinimumSpanningTree extends GraphElement {
 	}
 	/**
 	 * Calculates total edge cost and edge list of minimum spanning tree via Prim's algorithm O(|E|log|V|).<br>
-	 * @param list	adjacency list (※edge weights can be negative)
-	 * @param s	source node
+	 * @param adjList	adjacency list (※edge weights can be negative)
+	 * @param s	source 	node
 	 * @return	MSTResult
 	 */
-	public static MSTResult Prim(List<Edge>[] list, int s) {
-		int n = list.length, totalCost = 0;
+	public static MSTResult Prim(List<List<Edge>> adjList, int s) {
+		int n = adjList.size(), totalCost = 0;
 		List<Edge> T = new LinkedList<Edge>();
 		boolean[] visited = new boolean[n];
 
@@ -33,15 +33,15 @@ public class MinimumSpanningTree extends GraphElement {
 			T.add(e);
 			totalCost += e.w;
 			visited[e.d] = true;
-			for(Edge f: list[e.d]) if(!visited[f.d]) q.add(f);
+			for(Edge f: adjList.get(e.d)) if(!visited[f.d]) q.add(f);
 		}
 		return new MSTResult(totalCost, T);
 	}
 	/**
 	 * Calculates total edge cost and edge list of minimum spanning tree via Prim's algorithm O(|E|log|V|)<br>
 	 * AOJ No. 0072
-	 * @param list	adjacency list (※edge weights can be negative)
+	 * @param adjList	adjacency list (※edge weights can be negative)
 	 * @return	MSTResult
 	 */
-	public static MSTResult Prim(List<Edge>[] list){ return Prim(list, 0); }
+	public static MSTResult Prim(List<List<Edge>> list){ return Prim(list, 0); }
 }

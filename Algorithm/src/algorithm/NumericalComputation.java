@@ -1,6 +1,7 @@
 package algorithm;
-
-public class NumericalComputation extends Utility{
+import static algorithm.Utility.equal;
+public final class NumericalComputation {
+	private NumericalComputation(){}
 	static interface Function {
 		public double f(double x);
 		public double fp(double x);

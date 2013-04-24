@@ -3,13 +3,16 @@ package algorithm;
 import java.util.HashMap;
 import java.util.TreeMap;
 
-public class Utility {
+public final class Utility {
+	private Utility(){}
 	public static final double EPS = 1e-10;
 	public static boolean equal(double a, double b){ return Math.abs(a-b) < EPS; }	// a == b
 	public static boolean less(double a, double b){ return a - b < -EPS; }			// a < b
 	public static boolean leq(double a, double b){ return a - b < EPS; }			// a <= b
 	public static boolean greater(double a, double b){ return less(b,a); }			// a > b
 	public static boolean geq(double a, double b){ return leq(b,a); }				// a >= b
+	public static boolean isTrue(int field, int bit){ return (field & bit) != 0; }
+	public static boolean isFalse(int field, int bit){ return !isTrue(field, bit); }
 	/**
 	 * Swaps x[i] for x[j].<br>
 	 * AOJ No. 0011, 0040
