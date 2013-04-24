@@ -2,7 +2,11 @@ package algorithm;
 
 import java.util.HashMap;
 import java.util.TreeMap;
-
+/**
+ * 参考ページ<br>
+ * <a href=http://ja.wikipedia.org/wiki/%E9%AD%94%E6%96%B9%E9%99%A3>魔方陣 - Wikipedia</a><br>
+ * <a href=http://www2u.biglobe.ne.jp/~zed/m_stitle.htm>魔方陣の解法について</a><br>
+ */
 public final class Utility {
 	private Utility(){}
 	public static final double EPS = 1e-10;
@@ -35,6 +39,19 @@ public final class Utility {
 	 */
 	public static Object[] swap(Object[] a, int i, int j){	
 		Object tmp = a[i]; a[i] = a[j]; a[j] = tmp; return a;
+	}
+	/**
+	 * Swaps a M[i][j] for M[k][l]
+	 * @param M matrix |modify|
+	 * @param i
+	 * @param j
+	 * @param k
+	 * @param l
+	 * @return swapped matrix
+	 */
+	public static int[][] swap(int[][] M, int i, int j, int k, int l){
+		int temp = M[i][j]; M[i][j] = M[k][l]; M[k][l] = temp;
+		return M;
 	}
 
 	/**
