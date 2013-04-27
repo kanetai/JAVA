@@ -10,7 +10,8 @@ public final class DateAlgorithm {
 		@Override public String toString(){ return description; }
 	}
 	/**
-	 * Tests whether y is reap year or not.
+	 * Tests whether y is reap year or not.<br>
+	 * AOJ No. 0093
 	 * @param y	year
 	 * @return	true -> y is reap year. false -> y is not reap year.
 	 */
