@@ -162,7 +162,7 @@ public final class Define2D {
 		public void set(Point o, double r){ set(o.x, o.y, r); }
 		/**
 		 * Returns positional relation with circle c<br>
-		 * AOJ No.0023
+		 * AOJ No.0023, 0090
 		 * @param c circle
 		 * @return	positional relation
 		 */

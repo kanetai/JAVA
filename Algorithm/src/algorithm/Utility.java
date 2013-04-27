@@ -17,6 +17,8 @@ public final class Utility {
 	public static boolean geq(double a, double b){ return leq(b,a); }				// a >= b
 	public static boolean isTrue(int field, int bit){ return (field & bit) != 0; }
 	public static boolean isFalse(int field, int bit){ return !isTrue(field, bit); }
+	
+	public static final int[] emptyIntArray = new int[0];
 	/**
 	 * Swaps x[i] for x[j].<br>
 	 * AOJ No. 0011, 0040
