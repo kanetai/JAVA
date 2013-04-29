@@ -49,6 +49,7 @@ public final class IntegerAlgorithm {
 	}
 	/**
 	 * Calculates the Least Common Multiple LCM(x[0], x[1], ..., x[n-1])<br>
+	 * AOJ No. 0114(partial modification)
 	 * n = x.length, O(n log max{a,b})
 	 * @param x
 	 * @return
