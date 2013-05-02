@@ -1,5 +1,6 @@
 package algorithm;
 public class SyntacticAnalysis {
+	private SyntacticAnalysis(){}
 	/*
 	 * AOJ No. 0109
 	 * <equation> ::= <factor> {<operator1> <factor>}
