@@ -109,7 +109,7 @@ public final class DateAlgorithm {
 	 * (Julian day + 1)%7 = 0->Sun, 1->Mon, .., 6->Sat<br>
 	 * ((modified Julian day)%7 + 10 )% 7 = 0->Sun, 1->Mon, .., 6->Sat<br>
 	 * <a href="http://en.wikipedia.org/wiki/Julian_day">consultation</a><br>
-	 * AOJ No. 0083
+	 * AOJ No. 0083, 0125
 	 * @param y 		year(>=-4800?)  1 BD-> y=0, 2 BD-> y=-1, ...,  n BD-> y=1-n
 	 * @param m 		month
 	 * @param d 		day

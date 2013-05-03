@@ -2,7 +2,9 @@ package algorithm.geom;
 import java.awt.geom.Point2D;
 import static algorithm.Utility.equal;
 import static algorithm.Utility.less;
+import static algorithm.Utility.leq;
 import static algorithm.Utility.greater;
+import static algorithm.Utility.geq;
 import static algorithm.Utility.EPS;
 public final class Define2D {
 	private Define2D(){}
@@ -38,7 +40,6 @@ public final class Define2D {
 		}
 		public final double cross(Point p){ return x * p.y - y * p.x; }
 		public final double dot(Point p){ return x * p.x + y * p.y; }
-
 		/** 
 		 * Returns integer value that indicates positional relation of Points a(this point), b, and c.<br>
 		 * Positive return value indicates counter clockwise.<br>
@@ -62,7 +63,7 @@ public final class Define2D {
 		}
 		/**
 		 * Calculates the orthogonal projection onto the specified line l.
-		 * AOJ No. 0081
+		 * AOJ No. 0081, 0129
 		 * @param p point
 		 * @return  orthogonal projection
 		 */
@@ -78,6 +79,34 @@ public final class Define2D {
 		 * @return  reflection
 		 */
 		public final Point reflection(Line l){ return projection(l).mul(2).sub(this); }
+		/**
+		 * Calculates distance between point p(this) and segment s.<br>
+		 * AOJ No. 0128
+		 * @param s segment
+		 * @return  distance between point p and segment s.
+		 */
+		public final double distancePS(Line s){
+			Point proj = projection(s);
+			return proj.intersectsPS(s) ? distance(proj) : Math.min(distance(s.start), distance(s.end));
+		}
+		/**
+		 * Tests whether point p(this) intersects with segment s or not.<br>
+		 * AOJ No. 0128
+		 * @param s Segment
+		 * @return  true -> p intersects with s. false -> p doesn't intersect with s.
+		 */
+		public final boolean intersectsPS(Line s) {
+			//return s.ccw(this) == 0; //これでもおk
+			return equal(s.start.distance(this) + this.distance(s.end), s.end.distance(s.start)); //三角不等式で等号が成り立つとき
+		}
+		/**
+		 * Tests whether point p(this) intersects with circle c or not.<br>
+		 * AOJ No. 0128
+		 * @param c Circle
+		 * @return true -> p intersects with c. false -> p doesn't intersect with c.
+		 */
+		public final boolean intersectsPC(Circle c){ return leq(distanceSq(c.o), c.r*c.r); }
+
 	} //class Point
 
 	public static class Line{
@@ -140,6 +169,25 @@ public final class Define2D {
 			return start.add(lp.mul(A/B));
 		}
 		/**
+		 * Calculates distance between segment s(this) and point p.<br>
+		 * @param s segment
+		 * @return  distance between point s and segment p.
+		 */
+		public final double distanceSP(Point p){ return p.distancePS(this); }
+		/**
+		 * Tests whether point segment s(this) intersects with point p or not.<br>
+		 * @param p point
+		 * @return  true -> s intersects with p. false -> s doesn't intersect with p.
+		 */
+		public final boolean intersectsSP(Point p) { return p.intersectsPS(this); }
+		/**
+		 * Tests whether segment s(this) intersects with circle c or not. <br>
+		 * AOJ No. 0129
+		 * @param c circle
+		 * @return  true -> s intersects with c. false -> s doesn't intersect with c.
+		 */
+		public final boolean intersectsSC(Circle c) { return geq(c.r, distanceSP(c.o)); }
+		/**
 		 * Calculates the orthogonal projection of specified point p onto the line(this).
 		 * @param p point
 		 * @return  orthogonal projection
@@ -176,5 +224,17 @@ public final class Define2D {
 			if(d2 == dn2) return PosRelation.Inscribed;
 			return PosRelation.FullIncluded; //d < dn
 		}
+		/**
+		 * Tests whether circle c(this) intersects with segment s or not. 
+		 * @param s segment
+		 * @return  true -> c intersects with s. false -> c doesn't intersect with s.
+		 */
+		public final boolean intersectsCS(Line s){ return s.intersectsSC(this); }
+		/**
+		 * Tests whether circle c(this) intersects with point p or not. 
+		 * @param p Point
+		 * @return true -> c intersects with p. false -> c doesn't intersect with p.
+		 */
+		public final boolean intersectsCP(Point p){ return p.intersectsPC(this); }
 	}
 }
