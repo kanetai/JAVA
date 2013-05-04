@@ -4,7 +4,7 @@ import static algorithm.graph.GraphElement.INF;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-public class HamiltonGraph {
+public class HamiltonianGraph {
 	/** Result of Traveling Salesman Problem (TSP) */
 	public static class TSPResult{
 		private int s;		//source node (※= destination node)
@@ -17,9 +17,9 @@ public class HamiltonGraph {
 		/** Builds the shortest Hamilton cycle */
 		public List<Integer> buildPath(){ return buildPath(false); }
 		/**
-		 * Builds the shortest Hamilton cycle
+		 * Builds the shortest Hamiltonian cycle
 		 * @param useRecursive
-		 * @return the shortest Hamilton cycle
+		 * @return the shortest Hamiltonian cycle
 		 */
 		public List<Integer> buildPath(boolean useRecursive){
 			int N = prev.length, S = N - 1;
@@ -48,9 +48,9 @@ public class HamiltonGraph {
 	}
 
 	/**
-	 * Gets length of the shortest Hamilton cycle and back pointers for building the shortest path.
+	 * Gets length of the shortest Hamiltonian cycle and back pointers for building the shortest path.
 	 * O(2^|V| |V|^2)<br>
-	 * AOJ No. 0120
+	 * AOJ No. 0120, 0146(partial modification, Semi-Hamilton graph)
 	 * @param G adjacency matrix
 	 * @param s source node (※= destination node)
 	 * @return  TSPResult

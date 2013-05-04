@@ -6,9 +6,13 @@ import static algorithm.Utility.leq;
 import static algorithm.Utility.greater;
 import static algorithm.Utility.geq;
 import static algorithm.Utility.EPS;
+import static algorithm.geom.Algorithm2D.contains;
 public final class Define2D {
 	private Define2D(){}
-	enum PosRelation { Separated, Circumscribed, CrossAt2Point, Inscribed, FullIncluded; }
+	public static enum PosRelation {
+		Separated, Circumscribed, CrossAt2Point, Inscribed, FullIncluded,
+		PolygonInCircle, Circumcircle, PartialCross, Incircle, CircleInPolygon;
+	}
 	@SuppressWarnings("serial")
 	public static class Point extends Point2D.Double implements Comparable<Point>{
 		//constructor
@@ -63,7 +67,7 @@ public final class Define2D {
 		}
 		/**
 		 * Calculates the orthogonal projection onto the specified line l.
-		 * AOJ No. 0081, 0129
+		 * AOJ No. 0081, 0129, 0153
 		 * @param p point
 		 * @return  orthogonal projection
 		 */
@@ -81,7 +85,7 @@ public final class Define2D {
 		public final Point reflection(Line l){ return projection(l).mul(2).sub(this); }
 		/**
 		 * Calculates distance between point p(this) and segment s.<br>
-		 * AOJ No. 0128
+		 * AOJ No. 0128, 0153
 		 * @param s segment
 		 * @return  distance between point p and segment s.
 		 */
@@ -91,7 +95,7 @@ public final class Define2D {
 		}
 		/**
 		 * Tests whether point p(this) intersects with segment s or not.<br>
-		 * AOJ No. 0128
+		 * AOJ No. 0128, 0153
 		 * @param s Segment
 		 * @return  true -> p intersects with s. false -> p doesn't intersect with s.
 		 */
@@ -209,10 +213,22 @@ public final class Define2D {
 		public void set(double x, double y, double r){ o.x = x; o.y = y; this.r = r; }
 		public void set(Point o, double r){ set(o.x, o.y, r); }
 		/**
+		 * Tests whether circle c(this) intersects with segment s or not. 
+		 * @param s segment
+		 * @return  true -> c intersects with s. false -> c doesn't intersect with s.
+		 */
+		public final boolean intersectsCS(Line s){ return s.intersectsSC(this); }
+		/**
+		 * Tests whether circle c(this) intersects with point p or not. 
+		 * @param p Point
+		 * @return true -> c intersects with p. false -> c doesn't intersect with p.
+		 */
+		public final boolean intersectsCP(Point p){ return p.intersectsPC(this); }
+		/**
 		 * Returns positional relation with circle c<br>
 		 * AOJ No.0023, 0090
 		 * @param c circle
-		 * @return	positional relation
+		 * @return	positional relation (Separated, Circumscribed, CrossAt2Point, Inscribed, FullIncluded)
 		 */
 		public final PosRelation positionalRelation(Circle c){
 			double d2 = o.distanceSq(c.o);
@@ -225,16 +241,38 @@ public final class Define2D {
 			return PosRelation.FullIncluded; //d < dn
 		}
 		/**
-		 * Tests whether circle c(this) intersects with segment s or not. 
-		 * @param s segment
-		 * @return  true -> c intersects with s. false -> c doesn't intersect with s.
+		 * Returns positional relation with polygon<br>
+		 * AOJ No. 153
+		 * @param polygon
+		 * @return positional relation (Sepalated, PolygonInCircle, Circumcircle, PortialCross, Incircle, CircleInPolygon) 
 		 */
-		public final boolean intersectsCS(Line s){ return s.intersectsSC(this); }
-		/**
-		 * Tests whether circle c(this) intersects with point p or not. 
-		 * @param p Point
-		 * @return true -> c intersects with p. false -> c doesn't intersect with p.
-		 */
-		public final boolean intersectsCP(Point p){ return p.intersectsPC(this); }
+		public PosRelation positionalRelation(final Point[] polygon){
+			final int n = polygon.length;
+			double[] dists = new double[n];
+			boolean flag = true, eq = true;
+			for(int i = 0; i < n; ++i){
+				dists[i] = o.distance(polygon[i]);
+				if(!equal(dists[i], r)) eq = false;
+				if(greater(dists[i], r)) flag = false;
+			}
+			if(eq) return PosRelation.Circumcircle; //外接円
+			if(flag) return PosRelation.PolygonInCircle; //円が多角形を内包する
+
+			for(int i = 0; i < n; ++i) dists[i] = o.distancePS(new Line(polygon[i], polygon[(i+1)%n]));
+
+			eq = flag = true;
+			if(contains(polygon, o)){
+				for(double d: dists){
+					if(!equal(d, r)) eq = false;
+					if(less(d, r)) flag = false;
+				}
+				if(eq) return PosRelation.Incircle; //内接円
+				if(flag) return PosRelation.CircleInPolygon; //多角形が円を内包する
+			}else{
+				for(double d: dists) if(leq(d, r)) flag = false;
+				if(flag) return PosRelation.Separated; //分離
+			}
+			return PosRelation.PartialCross; //一部交差
+		}
 	}
 }
