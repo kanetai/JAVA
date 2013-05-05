@@ -7,7 +7,7 @@ public final class IntegerAlgorithm {
 	/**
 	 * Creates primality test table via Eratosthenes' sieve. <br>
 	 * O( nlog(log n) )<br>
-	 * AOJ No. 0009, 0044, 0053, 0056, 0150
+	 * AOJ No. 0009, 0044, 0053, 0056, 0150, 0165
 	 * @param n table_size
 	 * @return primality test table {isPrime(0), isPrime(1),..., isPrime(n-1)}
 	 */

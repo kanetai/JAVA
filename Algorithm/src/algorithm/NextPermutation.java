@@ -55,7 +55,7 @@ public final class NextPermutation {
 	}
 	/**
 	 * Calculates the std::next_permutation(a, a+n) in C++. (n = a.length)<br>
-	 * AOJ No. 0041
+	 * AOJ No. 0041, 0170
 	 * @param a		array
 	 * @param key
 	 * @return		std::next_permutation(a, a+n)
