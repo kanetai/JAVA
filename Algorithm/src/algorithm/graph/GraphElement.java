@@ -16,6 +16,7 @@ public final class GraphElement{
 
 	/**
 	 * Converts adjacency matrix into adjacency list.<br>
+	 * AOJ No. 0157
 	 * @param G adjacency matrix
 	 * @return  adjacency lists
 	 */
@@ -23,7 +24,7 @@ public final class GraphElement{
 		int n = G.length;
 		List<List<Edge>> list = new ArrayList<List<Edge>>(n);
 		for(int i = 0; i < n; ++i){
-			list.set(i, new ArrayList<Edge>());
+			list.add(new ArrayList<Edge>());
 			for(int j = 0; j < n; ++j) if(G[i][j] < INF) list.get(i).add(new Edge(i, j, G[i][j]));
 		}
 		return list;

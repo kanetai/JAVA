@@ -21,7 +21,7 @@ public class APSPAlgorithm {
 		final public boolean isNegativeCycle(){ return hasNegativeCycle; }
 		/**
 		 * builds the shortest path from results of All-Pairs Shortest Path (APSP) Algorithm<br>
-		 * AOJ No. 0155(partial )
+		 * AOJ No. 0155
 		 * @param s	source node
 		 * @param d	destination node
 		 * @return	the shortest path from s to d
@@ -35,7 +35,7 @@ public class APSPAlgorithm {
 	/**
 	 * Gets all-pairs shortest distances and back pointers for building a shortest path 
 	 * via Floyd-Warshall algorithm(O(|V|^3)).<br>
-	 * AOJ No. 0117, 0144, 0155
+	 * AOJ No. 0117, 0144, 0155, 0157
 	 * @param G	adjacency matrix(|V|×|V|) (※edge weights can be negative)
 	 * @return	APSPResult
 	 */
@@ -66,6 +66,7 @@ public class APSPAlgorithm {
 	/**
 	 * Gets all-pairs shortest distances and back pointers for building a shortest path 
 	 * Via Johnson's algorithm(O(|V|^2 + |V||E|log|V|)).<br>
+	 * AOJ No. 0157
 	 * @param list	adjacency list (※edge weights can be negative)
 	 * @return	APSPResult
 	 */
