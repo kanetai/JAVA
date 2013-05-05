@@ -47,7 +47,7 @@ public final class Define2D {
 		/** 
 		 * Returns integer value that indicates positional relation of Points a(this point), b, and c.<br>
 		 * Positive return value indicates counter clockwise.<br>
-		 * AOJ No. 0035 0068
+		 * AOJ No. 0035, 0068, 0187 
 		 * @param b Target Point 1
 		 * @param c	Target Point 2
 		 * @return 	 1:	ab → ac counter clockwise<br>
@@ -135,7 +135,7 @@ public final class Define2D {
 		public final int ccw(Point p){ return start.ccw(end, p); }
 		/**
 		 * Tests whether segment s(this) intersects with segment t or not. <br>
-		 * AOJ No. 0059
+		 * AOJ No. 0059, 0187
 		 * @param t Target Segment
 		 * @return  true -> s intersects with t. false -> s doesn't intersect with t.
 		 */
@@ -143,7 +143,8 @@ public final class Define2D {
 			return ccw(t.start) * ccw(t.end) <= 0 && t.ccw(start) * t.ccw(end) <= 0;
 		}
 		/**
-		 * Calculates point at the intersection of segment s(this) with segment t
+		 * Calculates point at the intersection of segment s(this) with segment t<br>
+		 * AOJ No. 0187
 		 * @param t Target Segment
 		 * @return  Point intersection point. null -> Intersection point doesn't exists. 
 		 */
@@ -151,7 +152,8 @@ public final class Define2D {
 			return intersectsSS(t) ? intersectionLLPoint(t) : null;
 		}
 		/**
-		 * Tests whether line l(this) intersects with line m or not.  
+		 * Tests whether line l(this) intersects with line m or not.<br>
+		 * AOJ No. 0187
 		 * @param m Target Line
 		 * @return  true -> l intersects with m. false -> l doesn't intersect with m.
 		 */

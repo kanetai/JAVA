@@ -35,7 +35,7 @@ public class APSPAlgorithm {
 	/**
 	 * Gets all-pairs shortest distances and back pointers for building a shortest path 
 	 * via Floyd-Warshall algorithm(O(|V|^3)).<br>
-	 * AOJ No. 0117, 0144, 0155, 0157
+	 * AOJ No. 0117, 0144, 0155, 0157, 0189, 0200
 	 * @param G	adjacency matrix(|V|×|V|) (※edge weights can be negative)
 	 * @return	APSPResult
 	 */

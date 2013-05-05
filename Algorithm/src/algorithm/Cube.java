@@ -3,7 +3,7 @@ import java.util.HashSet;
 import java.util.Set;
 /**
  * <a href=http://www.prefield.com/algorithm/misc/dice.html>consultation</a><br>
- * AOJ No. 0171
+ * AOJ No. 0171, 0198
  * @param <T>
  */
 @SuppressWarnings("unchecked") public class Cube <T>{

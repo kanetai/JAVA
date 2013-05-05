@@ -1,5 +1,6 @@
 package algorithm;
 
+import java.awt.Point;
 import java.util.HashMap;
 import java.util.TreeMap;
 /**
@@ -17,6 +18,14 @@ public final class Utility {
 	public static boolean geq(double a, double b){ return leq(b,a); }				// a >= b
 	public static boolean isTrue(int field, int bit){ return (field & bit) != 0; }
 	public static boolean isFalse(int field, int bit){ return !isTrue(field, bit); }
+	
+	/**
+	 * Gets Manhattan distance between point p1 and point p2.
+	 * @param p1 point 1
+	 * @param p2 point 2
+	 * @return Manhattan distance
+	 */
+	public static int ManhattanDistance(Point p1, Point p2){ return Math.abs(p1.x - p2.x) + Math.abs(p1.y - p2.y); }
 	
 	public static final int[] emptyIntArray = new int[0];
 	/**

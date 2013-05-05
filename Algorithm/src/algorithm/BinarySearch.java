@@ -77,7 +77,8 @@ public final class BinarySearch {
 	 * If the array contains multiple elements equal to the specified object, 
 	 * there is no guarantee which one will be found.<br>
 	 * n = a.length, O(log n)<br>
-	 * ※This method is sample.
+	 * ※This method is sample.<br>
+	 * AOJ No. 0188(partial modification)
 	 * @param a		array
 	 * @param key
 	 * @return		index of key (-1 → not found)
@@ -95,7 +96,8 @@ public final class BinarySearch {
 	 * The range[fromIndex, toIndex) must be sorted into ascending order 
 	 * according to the specified comparator prior to making this call.
 	 * If it is not sorted, the results are undefined.<br>
-	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
+	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)<br>
+	 * AOJ No. 0181(partial modification)
 	 * @param a			array
 	 * @param fromIndex
 	 * @param toIndex
@@ -165,7 +167,8 @@ public final class BinarySearch {
 	 * The range[fromIndex, toIndex) must be sorted into ascending order 
 	 * according to the specified comparator prior to making this call.
 	 * If it is not sorted, the results are undefined.<br>
-	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)
+	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)<br>
+	 * AOJ No. 0186(partial modification)
 	 * @param a			array
 	 * @param fromIndex
 	 * @param toIndex

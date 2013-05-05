@@ -39,7 +39,7 @@ public final class MinimumSpanningTree {
 	}
 	/**
 	 * Calculates total edge cost and edge list of minimum spanning tree via Prim's algorithm O(|E|log|V|)<br>
-	 * AOJ No. 0072
+	 * AOJ No. 0072, 0180
 	 * @param adjList	adjacency list (※edge weights can be negative)
 	 * @return	MSTResult
 	 */

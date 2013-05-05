@@ -21,7 +21,7 @@ public final class IntegerAlgorithm {
 	/**
 	 * Calculates the Greatest Common Divisor GCD(a,b) via Extended Euclid's algorithm. <br>
 	 * O(log max{a,b})<br>
-	 * AOJ No.0005, 0040
+	 * AOJ No.0005, 0040, 0197(partial modification)
 	 * @param a
 	 * @param b
 	 * @return GCD(a,b)
