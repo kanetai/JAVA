@@ -67,7 +67,7 @@ public final class Algorithm2D {
 
 	/**
 	 * Tests whether polygon[0]→polygon[1]→...→polygon[polygon.length-1]→polygon[0] contains point p or not. <br>
-	 * AOJ No. 0059, 0143, 0153
+	 * AOJ No. 0059, 0143, 0153, 0214
 	 * @param Polygon	vertex set of target polygon
 	 * @param p			target point
 	 * @return			true -> polygon contains p. false -> polygon doesn't contain p.

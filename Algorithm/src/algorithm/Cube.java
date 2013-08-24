@@ -31,6 +31,13 @@ import java.util.Set;
 		}
 		return ret;
 	}
+	public boolean equiv(Cube<T> o) {
+		for (int k = 0; k < N; ++k) {
+			for (int i = 0; i < M; rotateXY(), ++i) if(equals((Object)o)) return true;
+			if((k&1)==0) rotateXZ(); else rotateYZ();
+		}
+		return false;
+	}
 	@Override public String toString() {
 		StringBuilder sb = new StringBuilder();
 		for(Surface s : Surface.values()) sb.append(id[s.ordinal()]);

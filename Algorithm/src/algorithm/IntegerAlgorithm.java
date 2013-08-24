@@ -21,7 +21,7 @@ public final class IntegerAlgorithm {
 	/**
 	 * Calculates the Greatest Common Divisor GCD(a,b) via Extended Euclid's algorithm. <br>
 	 * O(log max{a,b})<br>
-	 * AOJ No.0005, 0040, 0197(partial modification)
+	 * AOJ No.0005, 0040, 0197(partial modification), 211(partial modification)
 	 * @param a
 	 * @param b
 	 * @return GCD(a,b)
@@ -30,7 +30,7 @@ public final class IntegerAlgorithm {
 	/**
 	 * Calculates the Least Common Multiple LCM(a,b).<br>
 	 * O(log max{a,b})<br>
-	 * AOJ No.0005
+	 * AOJ No.0005, 211(partial modification)
 	 * @param a
 	 * @param b
 	 * @return GCD(a,b)
@@ -38,6 +38,7 @@ public final class IntegerAlgorithm {
 	public static final int LCM(int a, int b){ return a / GCD(a, b) * b; }
 	/**
 	 * Calculates the Greatest Common Divisor GCD(x[0], x[1], ..., x[n-1]) via Extended Euclid's algorithm. <br>
+	 * AOJ No. 211(partial modification)
 	 * n = x.length, O(n log max{a,b})
 	 * @param x
 	 * @return GCD(x[0], x[1], ..., x[x.length-1])
@@ -49,7 +50,7 @@ public final class IntegerAlgorithm {
 	}
 	/**
 	 * Calculates the Least Common Multiple LCM(x[0], x[1], ..., x[n-1])<br>
-	 * AOJ No. 0114(partial modification)
+	 * AOJ No. 0114(partial modification), 211(partial modification)
 	 * n = x.length, O(n log max{a,b})
 	 * @param x
 	 * @return
