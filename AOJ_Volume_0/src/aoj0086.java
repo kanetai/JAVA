@@ -1,8 +1,7 @@
 import java.util.*;
-
-public class aoj0086 {
+class aoj0086 {
 	static final Scanner stdin = new Scanner(System.in);
-	static final int N = 101, n1 = UndirectedEG.TERMINAL_NODE1.ordinal(), n2 = UndirectedEG.TERMINAL_NODE2.ordinal();
+	static final int N = 101;
 	public static void main(String[] args) {
 		while(stdin.hasNext()){
 			List<List<Edge>> list = new ArrayList<List<Edge>>(N);
@@ -10,9 +9,10 @@ public class aoj0086 {
 			while(true){
 				int src = stdin.nextInt(), dst = stdin.nextInt();
 				if(src==0 && dst==0) break;
-				list.get(src).add(new Edge(src, dst, 1)); list.get(dst).add(new Edge(dst, src, 1));
+				list.get(src).add(new Edge(src, dst, 1)); 
+				if (src != dst) list.get(dst).add(new Edge(dst, src, 1));
 			}
-			System.out.println(undirectedEulerPath(list, 1, 2).isEmpty() ? "NG" : "OK" );
+			System.out.println(eulerPath(list, 1, 2).isEmpty() ? "NG" : "OK" );
 		}
 	}
 	public static class Edge {
@@ -20,41 +20,53 @@ public class aoj0086 {
 		Edge(int s, int d, int w){ set(s, d, w); }
 		public final void set(int s, int d, int w){ this.s = s; this.d = d; this.w = w; }
 	}
-	public static final int[] emptyIntArray = new int[0];
-	public static enum UndirectedEG { TERMINAL_NODE1, TERMINAL_NODE2, DEGREE; } //index of returned array
-	public static final List<Integer> undirectedEulerPath(List<List<Edge>> adjList, int s, int g) {
-		LinkedList<Integer> path = buildUndirectedEulerPath(adjList, s, isUndirectedEulerGraph(adjList));
-		return !path.isEmpty() && path.getLast() == g ? path : Collections.<Integer>emptyList();
+	private static class Result {
+		int terminal1 = -1, terminal2 = -1, edgeNum = 0;
+		public boolean isEulerGraph() { return terminal1 == -1 /*&& terminal2 == -1*/; }
 	}
-	public static final int[] isUndirectedEulerGraph(List<List<Edge>> adjList){
+	public static final List<Integer> eulerPath(List<List<Edge>> adjList, int s) {
+		return buildEulerPath(adjList, s, isEulerGraph(adjList));
+	}
+	public static final List<Integer> eulerPath(List<List<Edge>> adjList, int s, int g) {
+		List<Integer> path = buildEulerPath(adjList, s, isEulerGraph(adjList));
+		return !path.isEmpty() && path.get(path.size()-1) == g ? path : Collections.<Integer>emptyList();
+	}
+	public static final Result isEulerGraph(List<List<Edge>> adjList){
 		int odd = 0, n = adjList.size();
-		int ret[] = {-1, -1, 0}, n1 = UndirectedEG.TERMINAL_NODE1.ordinal();
-		int n2 = UndirectedEG.TERMINAL_NODE2.ordinal(), deg = UndirectedEG.DEGREE.ordinal();
+		Result ret = new Result();
 		for(int i = 0; i < n; ++i){
-			int size = adjList.get(i).size();
-			ret[deg] += size;
-			if((size&1) == 1){ ++odd; ret[ret[n1] == -1 ? n1 : n2] = i; }
+			int deg = 0;
+			for (Edge e: adjList.get(i)) deg += (e.s == e.d ? 2 : 1);
+			ret.edgeNum += deg;
+			if((deg&1) == 1){
+				++odd;
+				if (ret.terminal1 == -1) ret.terminal1 = i;
+				else ret.terminal2 = i;
+			}
 		}
-		if(odd != 0 && odd != 2) return emptyIntArray;
-		ret[deg] >>= 1;
-		return ret;
+		if (odd == 0 || odd == 2) {
+			ret.edgeNum /= 2; //because include outer and inner degree.
+			return ret;
+		}
+		return null;
 	}
-	private static LinkedList<Integer> buildUndirectedEulerPath(List<List<Edge>> adjList, int s, int[] result){
-		int n1 = UndirectedEG.TERMINAL_NODE1.ordinal(), n2 = UndirectedEG.TERMINAL_NODE2.ordinal(), n = adjList.size();
-		LinkedList<Integer> path = new LinkedList<Integer>();
-		if (result.length != 0 && (result[n1] == -1 || (result[n1] == s || result[n2] == s))) {
+	private static List<Integer> buildEulerPath(List<List<Edge>> adjList, int s, Result result){
+		int n = adjList.size();
+		if (result != null && (result.isEulerGraph() || (result.terminal1 == s || result.terminal2 == s))) {
+			LinkedList<Integer> path = new LinkedList<Integer>();
 			int[][] adj = new int[n][n];
 			for(List<Edge> l: adjList) for(Edge e: l) ++adj[e.s][e.d];
-			undirectedVisit(adjList, adj, s, path);
-			if(path.size() == result[UndirectedEG.DEGREE.ordinal()] + 1) return path; //connected
+			visit(adjList, adj, s, path);
+			if(path.size() == result.edgeNum + 1) return path; //connected
 		}
-		path.clear(); return path; //empty list
+		return Collections.<Integer>emptyList();
 	}
-	private static void undirectedVisit(List<List<Edge>> adjList, int[][] adjMatrix, int s, LinkedList<Integer> path) {
-		for(Edge e: adjList.get(s)) if(adjMatrix[e.s][e.d] != 0) {
-			--adjMatrix[e.s][e.d]; --adjMatrix[e.d][e.s];
-			undirectedVisit(adjList, adjMatrix, e.d, path);
+	private static void visit(List<List<Edge>> adjList, int[][] adjMatrix, int s, LinkedList<Integer> path) {
+		for(final Edge e: adjList.get(s)) if(adjMatrix[e.s][e.d] != 0) {
+			--adjMatrix[e.s][e.d];
+			if (e.d != e.s) --adjMatrix[e.d][e.s];
+			visit(adjList, adjMatrix, e.d, path);
 		}
 		path.addFirst(s);
-	}
+	}	
 }

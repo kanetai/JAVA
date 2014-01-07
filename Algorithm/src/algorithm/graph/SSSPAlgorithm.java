@@ -65,7 +65,8 @@ public class SSSPAlgorithm {
 	/**
 	 * Gets single-source shortest distances and back pointers for building a shortest path 
 	 * via Dijkstra's algorithm O(|E|log|V|).<br>
-	 * AOJ No. 0212, 0215(partial modification)
+	 * AOJ No. 0212, 
+	 * 	   No. 0215, 0224(partial modification)
 	 * @param list	adjacency list (※edge weights must be positive)
 	 * @param s	source node
 	 * @return	SSSPResult
