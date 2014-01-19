@@ -1,5 +1,5 @@
 import java.util.*;
-class aoj0086 {
+public class aoj0086 {
 	static final Scanner stdin = new Scanner(System.in);
 	static final int N = 101;
 	public static void main(String[] args) {
