@@ -1,5 +1,6 @@
 package algorithm.geom;
 import java.awt.geom.Point2D;
+
 import static algorithm.Utility.equal;
 import static algorithm.Utility.less;
 import static algorithm.Utility.leq;
@@ -34,7 +35,7 @@ public final class Define2D {
 		//a normal unit vector(±normalVector())
 		public final Point normalVector(){
 			double d = this.norm();
-			return new Point(-y/d, x/d);
+			return new Point(-y/d, x/d); //counter clock wise
 		}
 		//compareTo ascending order. priority 1. The x coordinate, 2. The y coordinate.
 		public final int compareTo(Point o){
@@ -47,7 +48,7 @@ public final class Define2D {
 		/** 
 		 * Returns integer value that indicates positional relation of Points a(this point), b, and c.<br>
 		 * Positive return value indicates counter clockwise.<br>
-		 * AOJ No. 0035, 0068, 0187, 0214
+		 * AOJ No. 0035, 0068, 0187, 0214, 0237
 		 * @param b Target Point 1
 		 * @param c	Target Point 2
 		 * @return 	 1:	ab → ac counter clockwise<br>
@@ -67,7 +68,7 @@ public final class Define2D {
 		}
 		/**
 		 * Calculates the orthogonal projection onto the specified line l.
-		 * AOJ No. 0081, 0129, 0153
+		 * AOJ No. 0081, 0129, 0153, 0237
 		 * @param p point
 		 * @return  orthogonal projection
 		 */
@@ -85,7 +86,7 @@ public final class Define2D {
 		public final Point reflection(Line l){ return projection(l).mul(2).sub(this); }
 		/**
 		 * Calculates distance between point p(this) and segment s.<br>
-		 * AOJ No. 0128, 0153
+		 * AOJ No. 0128, 0153, 0237
 		 * @param s segment
 		 * @return  distance between point p and segment s.
 		 */
@@ -95,7 +96,7 @@ public final class Define2D {
 		}
 		/**
 		 * Tests whether point p(this) intersects with segment s or not.<br>
-		 * AOJ No. 0128, 0153
+		 * AOJ No. 0128, 0153, 0237
 		 * @param s Segment
 		 * @return  true -> p intersects with s. false -> p doesn't intersect with s.
 		 */
@@ -121,6 +122,8 @@ public final class Define2D {
 		public void set(double sx, double sy, double ex, double ey){ start.x = sx; start.y = sy; end.x = ex; end.y = ey; }
 		public void set(Point start, Point end){ set(start.x, start.y, end.x, end.y); }
 		public void set(Line l){ set(l.start, l.end); }
+		public final double norm(){ return Math.sqrt( normsq() ); }
+		public final double normsq(){ return Math.pow(start.x-end.x, 2) + Math.pow(start.y-end.y, 2); }
 		/** 
 		 * Returns integer value that indicates positional relation of Points a(this.start), b(this.end), and c.
 		 * Positive return value indicates counter clockwise.<br>
@@ -135,7 +138,7 @@ public final class Define2D {
 		public final int ccw(Point p){ return start.ccw(end, p); }
 		/**
 		 * Tests whether segment s(this) intersects with segment t or not. <br>
-		 * AOJ No. 0059, 0187, 0214
+		 * AOJ No. 0059, 0187, 0214, 0237
 		 * @param t Target Segment
 		 * @return  true -> s intersects with t. false -> s doesn't intersect with t.
 		 */

@@ -18,7 +18,7 @@ public final class GraphElement{
 	 * Converts adjacency matrix into adjacency list.<br>
 	 * AOJ No. 0157
 	 * @param G adjacency matrix
-	 * @return  adjacency lists
+	 * @return  adjacency list
 	 */
 	public static List<List<Edge>> convertToAdjacencyList(int[][] G){
 		int n = G.length;
@@ -28,5 +28,18 @@ public final class GraphElement{
 			for(int j = 0; j < n; ++j) if(G[i][j] < INF) list.get(i).add(new Edge(i, j, G[i][j]));
 		}
 		return list;
+	}
+	/**
+	 * Gets inverse graph of specified graph<br>
+	 * AOJ No. 0237
+	 * @param adjList adjacency list
+	 * @return adjacency list of inverse graph
+	 */
+	public static List<List<Edge>> inverseAdjacencyList(List<List<Edge>> adjList) {
+		int n = adjList.size();
+		List<List<Edge>> ret = new ArrayList<List<Edge>>();
+		for (int i = 0; i < n; ++i) ret.add(new ArrayList<Edge>());
+		for (List<Edge> l : adjList) for (Edge e : l) ret.get(e.d).add(new Edge(e.d, e.s, e.w));
+		return ret;
 	}
 }

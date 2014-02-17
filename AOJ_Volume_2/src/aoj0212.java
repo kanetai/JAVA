@@ -27,12 +27,12 @@ public class aoj0212 {
 		while(!q.isEmpty()){
 			Edge p = q.poll();
 			int v = p.dst;
-			if(v == d) return p.cost;
 			if(dist[p.ticket][v] < p.cost) continue; //dist[v] < p.weight
+			if(v == d) return p.cost;
 			int N = (p.ticket > 0 ? 2 : 1);
 			for(int k = 0; k < N; ++k){
-				for(final Edge u: list.get(v)){ //※u.s = v
-					int newTicket = p.ticket - k, newDist = dist[newTicket][v] + (u.cost>>k);
+				for(final Edge u: list.get(v)){ 
+					int newTicket = p.ticket - k, newDist = dist[p.ticket][v] + (u.cost>>k);
 					if(dist[newTicket][u.dst] > newDist){
 						dist[newTicket][u.dst] = newDist;
 						q.add(new Edge(u.dst, newDist, newTicket));
