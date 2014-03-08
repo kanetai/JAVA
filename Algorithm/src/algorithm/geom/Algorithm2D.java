@@ -1,6 +1,6 @@
 package algorithm.geom;
-import java.util.Arrays;
-import algorithm.geom.Define2D.Point;
+import java.util.*;
+import algorithm.geom.Define2D.*;
 import static algorithm.Utility.leq;
 public final class Algorithm2D {
 	/**
@@ -45,7 +45,7 @@ public final class Algorithm2D {
 	/**
 	 * Gets convex hull from the specified vertex set via Andrew's Monotone Chain. If |V| < 3, returns null.
 	 * O(|V| log |V|)<br>
-	 * AOJ No. 0068
+	 * AOJ No. 0068 TODO:re-verify
 	 * @param V vertex set
 	 * @return  vertex set constructing convex-hull (clockwise). null -> |V|<3
 	 */
@@ -63,25 +63,6 @@ public final class Algorithm2D {
 		for(int i = n-2, t = k + 1; i >= 0; C[k++] = V[i--])
 			while(k >= t && C[k-2].ccw(C[k-1], V[i]) <= 0) --k;
 		return Arrays.copyOf(C, k-1); //C[k-1] is start point of lower-hull.
-	}
-
-	/**
-	 * Tests whether polygon[0]→polygon[1]→...→polygon[polygon.length-1]→polygon[0] contains point p or not. <br>
-	 * AOJ No. 0059, 0143, 0153, 0214, 0237
-	 * @param Polygon	vertex set of target polygon
-	 * @param p			target point
-	 * @return			true -> polygon contains p. false -> polygon doesn't contain p.
-	 */
-	public static final boolean contains(Point[] polygon, Point p) {
-		boolean in = false;
-		for (int i = 0, n = polygon.length; i < n; ++i) {
-			Point a = polygon[i].sub(p), b = polygon[(i+1)%n].sub(p);
-			if (a.y > b.y){ Point temp = b; b = a; a = temp; }
-			if (a.y <= 0 && 0 < b.y) //点pからxの正方向への半直線が多角形の頂点をとおるとき、最終的に交差数を偶数回にするためどちらかを<=ではなく、<にする
-				if (a.cross(b) < 0) in = !in; //=0 -> a//b -> on 
-			if (a.cross(b) == 0 && a.dot(b) <= 0) return true; //on edge
-		}
-		return in ? true : false; //in out
 	}
 
 	/**

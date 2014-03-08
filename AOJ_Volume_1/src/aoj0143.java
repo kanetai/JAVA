@@ -31,23 +31,24 @@ public class aoj0143 {
 		};
 		boolean solve(Point[] p, Point k, Point s){ return true; }
 	}
-	public static boolean equal(double a, double b){ return Math.abs(a-b) < EPS; }	// a == b
+	public static boolean equal(double a, double b){ return Math.abs(a-b) < EPS; }
+	public static boolean leq(double a, double b){ return a - b < EPS; }
 	@SuppressWarnings("serial") public static class Point extends Point2D.Double {
 		public Point(double x, double y){ super(x,y); }
 		public final Point sub(Point p){ return new Point( x - p.x, y - p.y ); }
 		public final double cross(Point p){ return x * p.y - y * p.x; }
 		public final double dot(Point p){ return x * p.x + y * p.y; }
 	} //class Point
-	public static final boolean contains(Point[] polygon, Point p) {
+	public static boolean contains(Point[] polygon, Point p) {
 		boolean in = false;
 		for (int i = 0, n = polygon.length; i < n; ++i) {
 			Point a = polygon[i].sub(p), b = polygon[(i+1)%n].sub(p);
 			if (a.y > b.y){ Point temp = b; b = a; a = temp; }
 			if (a.y <= 0 && 0 < b.y) //点pからxの正方向への半直線が多角形の頂点をとおるとき、最終的に交差数を偶数回にするためどちらかを<=ではなく、<にする
 				if (a.cross(b) < 0) in = !in; //=0 -> a//b -> on 
-			if (a.cross(b) == 0 && a.dot(b) <= 0) return true; //on edge
+			if (equal(a.cross(b), 0) && leq(a.dot(b), 0)) return true; //on edge
 		}
-		return in ? true : false; //in out
+		return in; //in out
 	}
 	public static double square(Point[] polygon){
 		int n = polygon.length;

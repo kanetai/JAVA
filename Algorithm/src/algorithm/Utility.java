@@ -1,16 +1,9 @@
 package algorithm;
-
 import java.awt.Point;
-import java.util.HashMap;
-import java.util.TreeMap;
-/**
- * 参考ページ<br>
- * <a href=http://ja.wikipedia.org/wiki/%E9%AD%94%E6%96%B9%E9%99%A3>魔方陣 - Wikipedia</a><br>
- * <a href=http://www2u.biglobe.ne.jp/~zed/m_stitle.htm>魔方陣の解法について</a><br>
- */
+import java.util.*;
 public final class Utility {
 	private Utility(){}
-	public static final double EPS = 1e-10;
+	public static final double EPS = 1e-9;
 	public static boolean equal(double a, double b){ return Math.abs(a-b) < EPS; }	// a == b
 	public static boolean less(double a, double b){ return a - b < -EPS; }			// a < b
 	public static boolean leq(double a, double b){ return a - b < EPS; }			// a <= b
@@ -30,7 +23,7 @@ public final class Utility {
 	public static final int[] emptyIntArray = new int[0];
 	/**
 	 * Swaps x[i] for x[j].<br>
-	 * AOJ No. 0011, 0040, 0214
+	 * AOJ No. 0011, 0040, 0214, 0264
 	 * @param x array |modify|
 	 * @param i
 	 * @param j

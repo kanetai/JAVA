@@ -76,7 +76,7 @@ public final class IntegerAlgorithm {
 	 * Calculates GCD(a,b) and a solution (x1,x2) for ax1 + bx2 = GCD(a,b) via Extended Euclid's algorithm. <br>
 	 * <a href=http://www2.cc.niigata-u.ac.jp/~takeuchi/tbasic/BackGround/EuclidRec.html>consultation</a><br>
 	 * O(log max(a,b))<br>
-	 * AOJ No. 0040
+	 * AOJ No. 0040, 0264
 	 * @param a
 	 * @param b
 	 * @param x	array(size>=2)←{x1, x2} |modify|
@@ -116,7 +116,7 @@ public final class IntegerAlgorithm {
 	 * Calculates modular multiplicative inverse(a^-1 mod m).
 	 * If a^-1 mod m doesn't exist(i.e. a is coprime to m), returns 0.<br>
 	 * O( log max(a,m) )<br>
-	 * AOJ No. 0040
+	 * AOJ No. 0040, 0264
 	 * @param a positive integer
 	 * @param m modulus
 	 * @return	a^-1 mod m.  0 -> a^-1 mod m doesn't exist.

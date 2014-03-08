@@ -74,7 +74,8 @@ public final class DateAlgorithm {
 	 * (Julian day + 1)%7 = 0->Sun, 1->Mon, .., 6->Sat<br>
 	 * ((modified Julian day)%7 + 10 )% 7 = 0->Sun, 1->Mon, .., 6->Sat<br>
 	 * <a href="http://www.prefield.com/algorithm/misc/date.html">consultation</a><br>
-	 * AOJ No. 0083
+	 * AOJ No. 0083 <br>
+	 *     No. 0261(partial modification)
 	 * @param y 		year(>=-4800?)  1 BD-> y=0, 2 BD-> y=-1, ...,  n BD-> y=1-n
 	 * @param m 		month
 	 * @param d 		day
@@ -109,7 +110,8 @@ public final class DateAlgorithm {
 	 * (Julian day + 1)%7 = 0->Sun, 1->Mon, .., 6->Sat<br>
 	 * ((modified Julian day)%7 + 10 )% 7 = 0->Sun, 1->Mon, .., 6->Sat<br>
 	 * <a href="http://en.wikipedia.org/wiki/Julian_day">consultation</a><br>
-	 * AOJ No. 0083, 0125
+	 * AOJ No. 0083, 0125 <br>
+	 *     No. 0261(partial modification)
 	 * @param y 		year(>=-4800?)  1 BD-> y=0, 2 BD-> y=-1, ...,  n BD-> y=1-n
 	 * @param m 		month
 	 * @param d 		day
@@ -143,24 +145,25 @@ public final class DateAlgorithm {
 
 	/**
 	 * Julian day -> Gregorian Calendar<br>
-	 * <a href="http://en.wikipedia.org/wiki/Julian_day">consultation</a>
+	 * <a href="http://en.wikipedia.org/wiki/Julian_day">consultation</a><br>
+	 * AOJ No. 0261
 	 * @param jd Julian day
 	 * @param y year(>=4800?)
 	 * @param m month
 	 * @param d day
 	 * @return	Gregorian Calendar {y,m,d}
 	 */
-	public static final int[] JulianDatyToGreg(int jd, int y, int m, int d){
+	public static final int[] JulianDatyToGreg(int jd){
 		int temp = jd + 32044; // +0.5
-		y = -4800;
+		int y = -4800;
 
 		jd = temp/146097;			temp %= 146097;			y += (jd * 400);
 		jd = (temp/36524 + 1)*3/4;	temp -= (jd * 36524);	y += (jd * 100);
 		jd = temp/1461;				temp %= 1461;			y += (jd * 4);
 		jd = (temp/365 + 1)*3/4;	temp -= (jd * 365);		y += jd;
 
-		m = (temp*5 + 308)/153 -2;
-		d = temp - (m + 4)*153/5 + 122;
+		int m = (temp*5 + 308)/153 -2;
+		int d = temp - (m + 4)*153/5 + 122;
 		y += ((m + 2)/12 );
 
 		m = (m+2) % 12 + 1;

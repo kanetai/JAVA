@@ -3,44 +3,57 @@ public class aoj0109 {
 	static final Scanner stdin = new Scanner(System.in);
 	public static void main(String[] args) { 
 		int n = stdin.nextInt();
-		while(n-->0)
-			System.out.println(equation(stdin.next().toCharArray(), 0).value);
+		while(n-->0) System.out.println(SyntacticAnalysis.calc(stdin.next()));
 	}
-	public static class Result{
-		int value, pos;
-		Result(int value, int pos){this.value = value; this.pos = pos;}
-	}
-	public static Result equation(char[] str, int pos){
-		Result left = factor(str, pos);
-		while(str[left.pos] == '+' || str[left.pos] == '-'){
-			Result right = factor(str, left.pos+1);
-			if(str[left.pos] == '+') left.value += right.value;
-			else left.value -= right.value;
-			left.pos = right.pos;
+	public static class SyntacticAnalysis {
+		static String eq;
+		static int pos = 0;
+		private static char next() { return eq.charAt(pos++); }
+		public static int calc(String equation) {
+			eq = equation;// + "$";
+			pos = 0;
+			return equation();
 		}
-		return left;
-	}
-	private static Result factor(char[] str, int pos){
-		Result left = term(str, pos);
-		while(str[left.pos] == '*' || str[left.pos] == '/'){
-			Result right = term(str, left.pos+1);
-			if(str[left.pos] == '*') left.value *= right.value;
-			else left.value /= right.value;
-			left.pos = right.pos;
+		private static int equation() {
+			int value = factor();
+			for (char c = next(); c == '+' || c == '-'; c = next()) {
+				if(c == '+') value += factor();
+				else value -= factor();
+			}
+			--pos;
+			return value;
 		}
-		return left;
-	}
-	private static Result term(char[] str, int pos){
-		if(str[pos] == '('){
-			Result res = equation(str, pos+1);
-			assert str[res.pos] == ')';
-			res.pos += 1; //skip ')'
-			return res;
-		}else{
+		private static int factor() {
+			int value = term();
+			for (char c = next(); c == '*' || c == '/'; c = next()) {
+				if(c == '*') value *= term();
+				else value /= term();
+			}
+			--pos;
+			return value;
+		}
+		private static int term() {
+			char c = next();
 			int value = 0;
-			while(Character.isDigit(str[pos]))
-				value = value * 10 + (str[pos++] - '0');
-			return new Result(value, pos);
+			switch (c) {
+			case '(':
+				value = equation();
+				c = next(); assert c == ')'; //skip ')'
+				break;
+			case '+':
+				value = equation(); break;
+			case '-':
+				value = -1 * equation(); break;
+			default:
+				if (Character.isDefined(c)) {
+					while(Character.isDigit(c)) {
+						value = value * 10 + (c - '0');
+						c = next();
+					}
+					--pos;
+				}
+			}
+			return value;
 		}
 	}
 }

@@ -41,7 +41,7 @@ public class aoj0081 {
 		public final double dot(Point p){ return x * p.x + y * p.y; }
 		public final double normsq(){ return x*x + y*y; }
 		public final Point projection(Line l){
-			Point a = l.end.sub(l.start);
+			Point a = l.dirV();
 			Point b = this.sub(l.start);
 			return l.start.add(a.mul(a.dot(b)/a.normsq()));
 		}
@@ -50,6 +50,7 @@ public class aoj0081 {
 	public static class Line{
 		private final Point start;
 		private final Point end;
+		public Point dirV() { return end.sub(start); } //directional vector
 		public Line(double sx, double sy, double ex, double ey){ start = new Point(sx,sy); end = new Point(ex,ey); }
 	}
 }

@@ -64,6 +64,7 @@ public class aoj0187 {
 		private final Point start;
 		private final Point end;
 		public Line(double sx, double sy, double ex, double ey){ start = new Point(sx,sy); end = new Point(ex,ey); }
+		public Point dirV() { return end.sub(start); } //directional vector
 		public final int ccw(Point p){ return start.ccw(end, p); }
 		public final boolean intersectsSS(Line t) {
 			return ccw(t.start) * ccw(t.end) <= 0 && t.ccw(start) * t.ccw(end) <= 0;
@@ -72,8 +73,9 @@ public class aoj0187 {
 			return intersectsSS(t) ? intersectionLLPoint(t) : null;
 		}
 		public final boolean intersectsLL(Line m) {
-			return Math.abs(end.sub(start).cross(m.end.sub(m.start))) > EPS || // non-parallel
-					Math.abs(end.sub(start).cross(m.start.sub(end))) < EPS;     // same line
+			Point lv = this.dirV(), mv = m.dirV();
+			return Math.abs(lv.cross(mv)) > EPS || // non-parallel
+					Math.abs(lv.cross(mv.mul(-1))) < EPS;     // same line
 		}
 		public final Point intersectionLLPoint(Line m){
 			Point mp = m.end.sub(m.start), lp = end.sub(start);

@@ -43,7 +43,7 @@ public class aoj0153 {
 		public final double cross(Point p){ return x * p.y - y * p.x; }
 		public final double dot(Point p){ return x * p.x + y * p.y; }
 		public final Point projection(Line l){
-			Point a = l.end.sub(l.start);
+			Point a = l.dirV();
 			Point b = this.sub(l.start);
 			return l.start.add(a.mul(a.dot(b)/a.normsq()));
 		}
@@ -59,6 +59,7 @@ public class aoj0153 {
 		private final Point start;
 		private final Point end;
 		public Line(Point start, Point end){ this.start = new Point(start); this.end = new Point(end); }
+		public Point dirV() { return end.sub(start); } //directional vector
 	} //class Line
 	public static class Circle{
 		public final Point o;
@@ -94,15 +95,15 @@ public class aoj0153 {
 			return PosRelation.PartialCross; //一部交差
 		}
 	}
-	public static final boolean contains(Point[] polygon, Point p) {
+	public static boolean contains(Point[] polygon, Point p) {
 		boolean in = false;
 		for (int i = 0, n = polygon.length; i < n; ++i) {
 			Point a = polygon[i].sub(p), b = polygon[(i+1)%n].sub(p);
 			if (a.y > b.y){ Point temp = b; b = a; a = temp; }
-			if (a.y <= 0 && 0 < b.y) //点pからxの正方向への半直線が多角形の頂点をとおるとき、最終的に交差数を偶数回にするためどちらかを<=ではなく、<にする
+			if (a.y <= 0 && 0 < b.y) 
 				if (a.cross(b) < 0) in = !in; //=0 -> a//b -> on 
-			if (a.cross(b) == 0 && a.dot(b) <= 0) return true; //on edge
+			if (equal(a.cross(b), 0) && leq(a.dot(b), 0)) return true; //on edge
 		}
-		return in ? true : false; //in out
+		return in; //in out
 	}
 }

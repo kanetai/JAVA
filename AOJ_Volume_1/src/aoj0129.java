@@ -44,7 +44,7 @@ public class aoj0129 {
 		public final Point mul(double k){ return new Point( k*x, k*y ); }
 		public final double dot(Point p){ return x * p.x + y * p.y; }
 		public final Point projection(Line l){
-			Point a = l.end.sub(l.start);
+			Point a = l.dirV();
 			Point b = this.sub(l.start);
 			return l.start.add(a.mul(a.dot(b)/a.normsq()));
 		}
@@ -60,6 +60,7 @@ public class aoj0129 {
 	public static class Line{
 		private final Point start, end;
 		public Line(double sx, double sy, double ex, double ey){ start = new Point(sx,sy); end = new Point(ex,ey); }
+		public Point dirV() { return end.sub(start); } //directional vector
 		public final double distanceSP(Point p){ return p.distancePS(this); }
 		public final boolean intersectsSC(Circle c) { return geq(c.r, distanceSP(c.o)); }
 	} //class Line

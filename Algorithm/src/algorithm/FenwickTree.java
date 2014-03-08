@@ -1,7 +1,7 @@
 package algorithm;
 
 import java.util.Arrays;
-/** AOJ No. 0167 */
+/** AOJ No. 0167, 0271*/
 public final class FenwickTree{
 	private int[] x;
 	public FenwickTree(int n){ init(n);}
@@ -21,7 +21,7 @@ public final class FenwickTree{
 	 * @param i	(inclusive) end index
 	 * @return	x[0] + x[1] + ... + x[i]
 	 */
-	public final int sum(int i){
+	public final int sum(int i) {
 		int ret = 0;
 		//If 1 start (not 0 start), use j -= (j&-j)
 		for(int j = i; j >= 0; j = ((j & (j+1)) - 1)) ret += x[j];
@@ -39,7 +39,7 @@ public final class FenwickTree{
 	 * @param i target index
 	 * @param a	
 	 */
-	public final void add(int i, int a){
+	public final void add(int i, int a) {
 		//If 1 start (not 0 start), use j += (j&-j)
 		for(int j = i; j < x.length; j |= j+1) x[j] += a;
 	}

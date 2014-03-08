@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class aoj0214 {
 	static final Scanner stdin = new Scanner(System.in);
 	static final int V = 4;
@@ -78,11 +77,11 @@ public class aoj0214 {
 		for (int i = 0, n = polygon.length; i < n; ++i) {
 			Point a = polygon[i].sub(p), b = polygon[(i+1)%n].sub(p);
 			if (a.y > b.y){ Point temp = b; b = a; a = temp; }
-			if (a.y <= 0 && 0 < b.y) //点pからxの正方向への半直線が多角形の頂点をとおるとき、最終的に交差数を偶数回にするためどちらかを<=ではなく、<にする
+			if (a.y <= 0 && 0 < b.y) 
 				if (a.cross(b) < 0) in = !in; //=0 -> a//b -> on 
 			if (a.cross(b) == 0 && a.dot(b) <= 0) return true; //on edge
 		}
-		return in ? true : false; //in out
+		return in;
 	}
 	public static class Line{
 		private final Point start;

@@ -74,16 +74,16 @@ public class aoj0059 {
 			return ccw(t.start) * ccw(t.end) <= 0 && t.ccw(start) * t.ccw(end) <= 0;
 		}
 	} //class Line
-	public static final boolean contains(Point[] polygon, Point p) {
+	public static boolean contains(Point[] polygon, Point p) {
 		boolean in = false;
 		for (int i = 0, n = polygon.length; i < n; ++i) {
 			Point a = polygon[i].sub(p), b = polygon[(i+1)%n].sub(p);
 			if (a.y > b.y){ Point temp = b; b = a; a = temp; }
 			if (a.y <= 0 && 0 < b.y) //点pからxの正方向への半直線が多角形の頂点をとおるとき、最終的に交差数を偶数回にするためどちらかを<=ではなく、<にする
 				if (a.cross(b) < 0) in = !in; //=0 -> a//b -> on 
-			if (a.cross(b) == 0 && a.dot(b) <= 0) return true; //on edge
+			if (equal(a.cross(b), 0) && leq(a.dot(b), 0)) return true; //on edge
 		}
-		return in ? true : false; //in out
+		return in; //in out
 	}
 	public static final boolean intersectsRR(Point[] a, Point[] b){
 		return leq(a[0].x, b[1].x) && leq(a[0].y, b[1].y) && leq(b[0].x, a[1].x) && leq(b[0].y, a[1].y);

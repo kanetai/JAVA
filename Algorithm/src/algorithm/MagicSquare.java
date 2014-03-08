@@ -1,5 +1,10 @@
 package algorithm;
 import static algorithm.Utility.swap;
+/**
+ * 参考ページ<br>
+ * <a href=http://ja.wikipedia.org/wiki/%E9%AD%94%E6%96%B9%E9%99%A3>魔方陣 - Wikipedia</a><br>
+ * <a href=http://www2u.biglobe.ne.jp/~zed/m_stitle.htm>魔方陣の解法について</a><br>
+ */
 public class MagicSquare {
 	static int[][] magicSquare(int n) throws Exception{
 		if(n<=0 || n==2) throw new Exception();
