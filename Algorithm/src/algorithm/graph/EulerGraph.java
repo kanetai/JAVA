@@ -15,7 +15,7 @@ public class EulerGraph {
 		 * Calculates undirected (semi) Euler path. O(|E|)
 		 * @param adjList 	adjacency list
 		 * @param s			start node
-		 * @return			Euler Path. emptyIntegerList -> Euler Path (with start node s) doesn't exists.
+		 * @return			Euler Path. emptyIntegerList -> Euler Path (with start node s) doesn't exist.
 		 */
 		public static final List<Integer> eulerPath(List<List<Edge>> adjList, int s) {
 			return buildEulerPath(adjList, s, isEulerGraph(adjList));
@@ -26,7 +26,7 @@ public class EulerGraph {
 		 * @param adjList	adjacency List
 		 * @param s			start node
 		 * @param g			goal node
-		 * @return			Euler Path. emptyList -> Euler Path (with start node s, goal node g) doesn't exists.
+		 * @return			Euler Path. emptyList -> Euler Path (with start node s, goal node g) doesn't exist.
 		 */
 		public static final List<Integer> eulerPath(List<List<Edge>> adjList, int s, int g) {
 			List<Integer> path = buildEulerPath(adjList, s, isEulerGraph(adjList));
@@ -35,7 +35,7 @@ public class EulerGraph {
 		/**
 		 * Calculates undirected (semi) Euler path.O(|E|)
 		 * @param adjList	adjacency List
-		 * @return			Euler Path. emptyList -> Euler Path (with start node s, goal node g) doesn't exists.
+		 * @return			Euler Path. emptyList -> Euler Path (with start node s, goal node g) doesn't exist.
 		 */
 		public static List<Integer> eulerPath(List<List<Edge>> adjList) {
 			Result res = isEulerGraph(adjList);
@@ -104,7 +104,7 @@ public class EulerGraph {
 		 * Calculates (semi) Euler path. O(|A|)
 		 * @param adjList 	adjacency list
 		 * @param src		start node
-		 * @return			Euler Path. emptyIntegerList -> Euler Path (with start node s) doesn't exists.
+		 * @return			Euler Path. emptyIntegerList -> Euler Path (with start node s) doesn't exist.
 		 */
 		public static List<Integer> eulerPath(List<List<Edge>> adjList, int src) {
 			return buildEulerPath(adjList, src, isEulerGraph(adjList));
@@ -114,7 +114,7 @@ public class EulerGraph {
 		 * @param adjList	adjacency List
 		 * @param s			start node
 		 * @param g			goal node
-		 * @return			Euler Path. emptyList -> Euler Path (with start node s, goal node g) doesn't exists.
+		 * @return			Euler Path. emptyList -> Euler Path (with start node s, goal node g) doesn't exist.
 		 */
 		public static List<Integer> eulerPath(List<List<Edge>> adjList, int src, int dst) {
 			List<Integer> path = buildEulerPath(adjList, src, isEulerGraph(adjList));
@@ -124,7 +124,7 @@ public class EulerGraph {
 		 * Calculates (semi) Euler path.O(|A|)<br>
 		 * AOJ No. 0225
 		 * @param adjList	adjacency List
-		 * @return			Euler Path. emptyList -> Euler Path (with start node s, goal node g) doesn't exists.
+		 * @return			Euler Path. emptyList -> Euler Path (with start node s, goal node g) doesn't exist.
 		 */
 		public static List<Integer> eulerPath(List<List<Edge>> adjList) {
 			Result res = isEulerGraph(adjList);

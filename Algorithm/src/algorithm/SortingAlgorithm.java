@@ -50,4 +50,33 @@ public class SortingAlgorithm {
      * @return number of swaps
      */
 	public static final int mergeCount(int[] a){ return mergeCount(a, 0, a.length); }
+	
+	/**
+	 * Sort specified range [fromIndex, toIndex) of array into accending order via quick sort. <br>
+	 * (O(n log n), n:= toIndex-fromIndex)
+	 * @param a the array to be sorted
+	 * @param fromIndex the index of the first element, inclusive, to be sorted
+	 * @param toIndex the index of the last element, exclusive, to be sorted
+	 */
+	public static final void quickSort(int a[], int fromIndex, int toIndex){
+        if (fromIndex < toIndex) {
+            int p = a[(fromIndex + toIndex) / 2];
+            int l = fromIndex - 1, r = toIndex;
+            while (true) {
+                while (a[++l] < p);
+                while (a[--r] > p);
+                if (l >= r) break;
+                swap(a, l, r);
+            }
+            quickSort(a, fromIndex, l);
+            quickSort(a, r + 1, toIndex);
+        }
+    }
+	/** 
+	 * Sort specified array into accending order via quick sort. <br>
+	 * (O(n log n), n:= a.length) <br>
+	 * AOJ No. 0025, 0182
+	 * @param a the array to be sorted
+	 */
+	public static final void quickSort(int a[]) { quickSort(a, 0, a.length); }
 }

@@ -5,9 +5,9 @@ public final class GraphElement{
 	static final int INF = Integer.MAX_VALUE/2;
 	/** Edge of Graph */
 	public static class Edge implements Comparable<Edge>{
-		protected int s; //source node		
-		protected int d; //destination node
-		protected int w; //edge weight
+		public int s; //source node		
+		public int d; //destination node
+		public int w; //edge weight
 		Edge(int s, int d, int w){ set(s, d, w); }
 		Edge(Edge o){ set(o.s, o.d, o.w); }
 		public final void set(int s, int d, int w){ this.s = s; this.d = d; this.w = w; }

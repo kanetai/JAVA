@@ -97,7 +97,8 @@ public final class BinarySearch {
 	 * according to the specified comparator prior to making this call.
 	 * If it is not sorted, the results are undefined.<br>
 	 * n = toIndex - fromIndex (0 <= fromIndex < toIndex <= a.length), O(log n)<br>
-	 * AOJ No. 0181(partial modification)
+	 * AOJ No. 0181(partial modification)<br>
+	 * AOJ No. 0272
 	 * @param a			array
 	 * @param fromIndex
 	 * @param toIndex
@@ -120,6 +121,7 @@ public final class BinarySearch {
 	 * according to the specified comparator prior to making this call.
 	 * If it is not sorted, the results are undefined.<br>
 	 * n = a.length, O(log n)<br>
+	 * AOJ No. 0272
 	 * @param a			array
 	 * @param key
 	 * @param c			comparator
