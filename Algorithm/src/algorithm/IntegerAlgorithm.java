@@ -1,23 +1,8 @@
 package algorithm;
 
-import java.util.Arrays;
 import static algorithm.Utility.swap;
 public final class IntegerAlgorithm {
 	IntegerAlgorithm(){}
-	/**
-	 * Creates primality test table via Eratosthenes' sieve. <br>
-	 * O( nlog(log n) )<br>
-	 * AOJ No. 0009, 0044, 0053, 0056, 0150, 0165, 022
-	 * @param n table_size
-	 * @return primality test table {isPrime(0), isPrime(1),..., isPrime(n-1)}
-	 */
-	public static final boolean[] sieve(int n){
-		boolean[] ret = new boolean[n]; Arrays.fill(ret, true);
-		ret[0] = ret[1] = false;
-		for(int i = 2; i*i < n; ++i)
-			if(ret[i]) for(int j = i*i; j < n; j+=i) ret[j] = false;
-		return ret;
-	}
 	/**
 	 * Calculates the Greatest Common Divisor GCD(a,b) via Extended Euclid's algorithm. <br>
 	 * O(log max{a,b})<br>
@@ -91,16 +76,6 @@ public final class IntegerAlgorithm {
 			x[1] -= (a / b) * x[0];
 		}
 		return g;
-	}
-	/**
-	 * Tests whether a positive integer is prime number or not.
-	 * @param n positive integer
-	 * @return true -> n is prime number. false -> n is prime number.
-	 */
-	public static final boolean isPrime(int n){
-		if( n <= 1 ) return false; 
-		for(int i=2; i*i <= n;i++ ) if( n % i == 0 ) return false;
-		return true;
 	}
 	/**
 	 * Tests whether two positive integers are coprime or not.<br>

@@ -39,7 +39,7 @@ bsort xs  = bsort (init xs') ++ [last xs']
                              | otherwise = y1 : sweep (y2:ys)
 ```
 
-mergeCountの検証用に戻り値は交換回数担っている。
+mergeCountの検証用に戻り値は交換回数になっている。
 
 ```java
 public static final int bubbleSort(int a[], int fromIndex, int toIndex){
@@ -120,7 +120,7 @@ public static final void combSort(int a[], int fromIndex, int toIndex) {
 
 [http://en.wikipedia.org/wiki/Quicksort](http://en.wikipedia.org/wiki/Quicksort)
  
-\\(O(n \log n\\)
+\\(O(n \log n)\\)
  
 + 適当にピボットを選択する
 + ピボットより小さい数を前方、大きい数を後方に移動させる （分割）
@@ -283,7 +283,7 @@ isort (x:xs) = insert x (isort xs)
 
 非安定な内部ソート。最悪計算量は\\(O(n\log^{2} n)\\)。
 
-\\( h_{i+1}=3h_{i} +1 = 1,4,13,40,121, \cdots, \frac{3^i -1}{2}, \cdots < n \\)を大きい方から採用すると\\(O(n^{1.25})\\)となる。
+\\( h_{i+1}=3h_{i} +1 = 1,4,13,40,121, \cdots, \frac{3^{i} -1}{2}, \cdots\\) < \\(n\\)を大きい方から採用すると\\(O(n^{1.25})\\)となる。
 
 ##分配整列(Distribution sorts)
 
@@ -401,11 +401,11 @@ msort xs  = merge (msort left) (msort right)
 
 ところで、\\( a_0, a_1, \cdots, a_{n-1}\\)のbubbleSortによる交換回数\\(T\\)は、
 
-\\( 
-T=\sum_{i=0}^{n-1} f(i) \text{となる}\\
-\text{ただし、}f(i)=\left | \{ j|j < i, b_j > a_i \} \right |, \\
-b_0, b_1, \cdots, b_{n-1}\text{はソート済みの要素とする} \\
-\\)
+\\( T=\sum_{i=0}^{n-1} f(i) \\)となる
+
+ただし、\\(f(i)=\left | \{ j|j < i, b_{j} > a_{i} \} \right |\\),
+
+\\(b_0, b_1, \cdots, b_{n-1}\\)はソート済みの要素とする。
 
 なので、マージソートするときに\\(f(i)\\)をカウントすれば\\(O(n\log n)\\)で\\(T\\)が求まる。
 
