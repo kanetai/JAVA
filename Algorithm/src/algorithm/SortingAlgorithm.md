@@ -1,4 +1,20 @@
-#ソート、整列(Sorting)
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  },
+  TeX: {
+  	extensions: ["mhchem.js"]
+  },
+  CommonHTML: { matchFontHeight: false },
+  displayAlign: "left",
+  displayIndent: "2em"
+});
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+# ソート、整列(Sorting)
 
 [リポジトリ](https://github.com/kanetai/JAVA)
 
@@ -12,17 +28,17 @@ public static final int[] swap(int[] x, int i, int j){
 }
 ```
 
-##交換ソート(Exchange sorts)
+## 交換ソート(Exchange sorts)
 
-###バブルソート, 基本交換法, 隣接交換法, 交換法(bubble sort)
+### バブルソート, 基本交換法, 隣接交換法, 交換法(bubble sort)
 
 [http://en.wikipedia.org/wiki/Bubble_sort](http://en.wikipedia.org/wiki/Bubble_sort)
 
 隣接要素交換を繰り返してソート。特に最適化していないナイーブな実装だと安定な内部ソート。
 
-比較回数 \\(T=\sum_{k=1}^{n-1}k = \frac{n(n-1)}{2} \\)回
+比較回数 \\( T=\sum_{k=1}^{n-1}k = \frac{n(n-1)}{2} \\)回
 
-交換回数は最悪\\(T\\)回、平均\\(\frac{1}{2}T = \frac{n(n-1)}{4}\\)回
+交換回数は最悪\\( T \\)回、平均\\( \frac{1}{2}T = \frac{n(n-1)}{4} \\)回
 
 \\( O(n^2)\\)
 
@@ -51,7 +67,7 @@ public static final int bubbleSort(int a[], int fromIndex, int toIndex){
 	return swapCount;
 }
 ```
-###シェーカーソート(cocktail sort, bidirectional bubble sort, cocktail shaker sort, shaker sort, ripple sort, shuffle sort, shuttle sort)
+### シェーカーソート(cocktail sort, bidirectional bubble sort, cocktail shaker sort, shaker sort, ripple sort, shuffle sort, shuttle sort)
 
 [http://en.wikipedia.org/wiki/Cocktail_sort](http://en.wikipedia.org/wiki/Cocktail_sort)
 
@@ -62,7 +78,7 @@ public static final int bubbleSort(int a[], int fromIndex, int toIndex){
 さらに端に連続して交換していない要素があれば、その分スキャン範囲を狭められる。
 ほとんど整列している系列に対して高速。
 
-###奇偶転置ソート(odd-even sort)
+### 奇偶転置ソート(odd-even sort)
 
 [http://en.wikipedia.org/wiki/Odd%E2%80%93even_sort](http://en.wikipedia.org/wiki/Odd%E2%80%93even_sort)
 
@@ -87,7 +103,7 @@ public static final void oddEvenSort(int a[], int fromIndex, int toIndex) {
 }
 ```
 
-###櫛ソート(comb sort)
+### 櫛ソート(comb sort)
 
 [http://en.wikipedia.org/wiki/Comb_sort](http://en.wikipedia.org/wiki/Comb_sort)
 
@@ -116,7 +132,7 @@ public static final void combSort(int a[], int fromIndex, int toIndex) {
 }
 ```
 
-###クイックソート(quicksort)
+### クイックソート(quicksort)
 
 [http://en.wikipedia.org/wiki/Quicksort](http://en.wikipedia.org/wiki/Quicksort)
  
@@ -154,7 +170,7 @@ public static final void quickSort(int a[], int fromIndex, int toIndex) {
 }
 ```
 
-###ボゴソート(bogosort, stupid sort, slowsort, random sort, shotgun sort, monkey sort)
+### ボゴソート(bogosort, stupid sort, slowsort, random sort, shotgun sort, monkey sort)
 
 [http://en.wikipedia.org/wiki/Bogosort](http://en.wikipedia.org/wiki/Bogosort)
 
@@ -177,9 +193,9 @@ public static final void bogoSort(int a[], int fromIndex, int toIndex) {
 }
 ```
 
-##選択ソート(Selection sorts)
+## 選択ソート(Selection sorts)
 
-###選択ソート(selection sort)
+### 選択ソート(selection sort)
 
 [http://en.wikipedia.org/wiki/Selection_sort](http://en.wikipedia.org/wiki/Selection_sort)
 
@@ -198,7 +214,7 @@ public static final void selectionSort(int a[], int fromIndex, int toIndex) {
 }
 ```
 
-###ヒープソート(heapsort)
+### ヒープソート(heapsort)
 
 [http://en.wikipedia.org/wiki/Heapsort](http://en.wikipedia.org/wiki/Heapsort)
 
@@ -206,7 +222,7 @@ public static final void selectionSort(int a[], int fromIndex, int toIndex) {
 
 \\(O(n \log n)\\)の非安定ソート。
 
-####２分ヒープ木(binary heap tree)
+#### ２分ヒープ木(binary heap tree)
 
 配列で実現できる。どの親\\(\geq \\)子(または親\\(\leq\\)子)を満たした２分木(binary tree)。兄弟同士の大小関係は任意なので、**半順序木(partial ordered tree)**とも呼ばれる。
 
@@ -252,9 +268,9 @@ public static final void heapSort(int a[], int fromIndex, int toIndex) {
 }
 ```
 
-##挿入ソート(insertion sorts)
+## 挿入ソート(insertion sorts)
 
-###挿入ソート(insertion sort)
+### 挿入ソート(insertion sort)
 
 [http://en.wikipedia.org/wiki/Insertion_sort](http://en.wikipedia.org/wiki/Insertion_sort)
 
@@ -275,7 +291,7 @@ isort (x:xs) = insert x (isort xs)
                             | otherwise = y:insert x ys 
 ```
 
-###シェルソート(shell sort)
+### シェルソート(shell sort)
 
 [http://en.wikipedia.org/wiki/Shellsort](http://en.wikipedia.org/wiki/Shellsort)
 
@@ -285,9 +301,9 @@ isort (x:xs) = insert x (isort xs)
 
 \\( h_{i+1}=3h_{i} +1 = 1,4,13,40,121, \cdots, \frac{3^{i} -1}{2}, \cdots\\) < \\(n\\)を大きい方から採用すると\\(O(n^{1.25})\\)となる。
 
-##分配整列(Distribution sorts)
+## 分配整列(Distribution sorts)
 
-###バケットソート、ビンソート(bucket sort, bin sort)
+### バケットソート、ビンソート(bucket sort, bin sort)
 
 [http://en.wikipedia.org/wiki/Bucket_sort](http://en.wikipedia.org/wiki/Bucket_sort)
 
@@ -317,7 +333,7 @@ public static final void countingSort(char a[], int fromIndex, int toIndex) {
 }
 ```
 
-###基数ソート(radix sort)
+### 基数ソート(radix sort)
 
 [http://en.wikipedia.org/wiki/Radix_sort](http://en.wikipedia.org/wiki/Radix_sort)
 
@@ -326,7 +342,7 @@ public static final void countingSort(char a[], int fromIndex, int toIndex) {
 
 \\(K\\)桁のデータ\\(n\\)個に対して、\\(O(n)\\)のソートアルゴリズムで基数ソートする場合、\\(O(Kn)\\)でソートできる。
 
-###スリープソート(sleep sort)
+### スリープソート(sleep sort)
 
 [http://dis.4chan.org/read/prog/1295544154](http://dis.4chan.org/read/prog/1295544154)
 
@@ -372,9 +388,9 @@ public static final void sleepSort(char a[], int fromIndex, int toIndex) {
 }
 ```
 
-##マージソート(Merge sorts)
+## マージソート(Merge sorts)
 
-###マージソート(merge sort, mergesort)
+### マージソート(merge sort, mergesort)
 
 [http://en.wikipedia.org/wiki/Merge_sort](http://en.wikipedia.org/wiki/Merge_sort)
 
@@ -417,12 +433,12 @@ public static int mergeCount(int[] a, int fromIndex, int toIndex){
 		int mid = fromIndex + n/2;
 		count += mergeCount(a, fromIndex, mid); count += mergeCount(a, mid, toIndex);
 		int[] temp = new int[n]; System.arraycopy(a, fromIndex, temp, 0, n);
-		//merge index i-> x, j-> left subsequence of x, k-> right subsequence of x
+		//merge index i-> x, j-> left subsequence of a, k-> right subsequence of a
 		for(int i = fromIndex, j = 0, k = n/2; i < toIndex; ++i){
-			if(j == n/2)				a[i] = temp[k++];
-			else if(k == n)				a[i] = temp[j++];
-			else if(temp[j] <= temp[k]) a[i] = temp[j++];
-			else						{a[i] = temp[k++]; count += n/2 - j; }
+			if(j == n/2)			a[i] = temp[k++];
+			else if(k == n)			a[i] = temp[j++];
+			else if(temp[j] <= temp[k])	a[i] = temp[j++];
+			else				{a[i] = temp[k++]; count += n/2 - j; }
 		}
 	}
 	return count;
